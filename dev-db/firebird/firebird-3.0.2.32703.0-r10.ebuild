@@ -1,18 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 inherit autotools eutils flag-o-matic multilib readme.gentoo-r1 user versionator
 
-MY_PN=${PN^}
+MY_PN="${PN^}"
+MY_PV="${PV%*.*.*}"
+MY_PV="${MY_PV//./_}"
 MY_P=${MY_PN}-$(replace_version_separator 4 -)
 MY_P=${MY_P/rc/ReleaseCandidate}
-MY_MM="${PV:0:3}"
+MY_MM="${PV%.*.*.*}"
 
 DESCRIPTION="A relational database offering many ANSI SQL:2003 and some SQL:2008 features"
 HOMEPAGE="https://www.firebirdsql.org/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/${MY_MM}-Release/${MY_P}.tar.bz2"
+SRC_URI="https://github.com/FirebirdSQL/${PN}/releases/download/R${MY_PV}/${MY_P}.tar.bz2"
 
 LICENSE="IDPL Interbase-1.0"
 KEYWORDS="~amd64"
