@@ -27,7 +27,7 @@ sys-apps/util-linux ncurses static-libs udev
 sys-devel/gcc cxx
 sys-devel/gdb python
 sys-libs/gdbm berkdb
-sys-libs/glibc debug
+sys-libs/glibc debug -multiarch
 sys-libs/ldb -ldap -python
 sys-libs/ntdb python
 sys-libs/talloc python
