@@ -103,7 +103,7 @@ sys-devel/gcc cxx -gtk
 sys-devel/gdb python
 sys-fs/lvm2 -udev
 sys-libs/gdbm berkdb
-sys-libs/glibc debug
+sys-libs/glibc debug -multiarch
 sys-libs/ntdb python
 sys-libs/talloc python
 sys-libs/tdb python
