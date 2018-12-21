@@ -99,7 +99,7 @@ sys-apps/busybox mdev sep-usr static
 sys-apps/pciutils -zlib
 sys-apps/util-linux ncurses static-libs
 sys-auth/polkit -gtk
-sys-devel/gcc cxx -gtk
+sys-devel/gcc cxx hardened -openmp -pch -sanitize
 sys-devel/gdb python
 sys-fs/lvm2 -udev
 sys-libs/gdbm berkdb
