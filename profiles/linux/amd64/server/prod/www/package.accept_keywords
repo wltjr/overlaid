@@ -40,6 +40,7 @@ dev-java/eclipse-javax-persistence
 dev-java/edtftpj
 dev-java/error-prone-annotations
 dev-java/facebook4j
+dev-java/failureaccess
 dev-java/glassfish-hk2-api
 dev-java/glassfish-hk2-locator
 dev-java/glassfish-hk2-osgi-resource-locator
