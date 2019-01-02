@@ -1,3 +1,4 @@
 >=dev-libs/icu-59
 sys-fs/udev
 sys-kernel/gentoo-sources
+=dev-python/cryptography-2.4.2
