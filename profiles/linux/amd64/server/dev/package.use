@@ -24,7 +24,7 @@ sys-apps/hwids udev
 sys-apps/pciutils -zlib
 sys-apps/portage python3
 sys-apps/util-linux ncurses static-libs udev
-sys-devel/gcc cxx
+sys-devel/gcc cxx openmp
 sys-devel/gdb python
 sys-libs/gdbm berkdb
 sys-libs/glibc debug -multiarch
