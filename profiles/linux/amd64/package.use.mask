@@ -1,1 +1,2 @@
 dev-libs/elfutils threads
+sys-devel/glibc multiarch
