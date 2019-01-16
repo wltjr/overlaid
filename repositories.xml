@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+    <repo quality="experimental" status="unofficial">
+        <name>os-xtoo</name>
+        <description>Obsidian-Studios, Inc. Overlay</description>
+        <homepage>https://github.com/Obsidian-StudiosInc/os-xtoo/</homepage>
+        <owner>	
+            <email>wlt-ml@o-sinc.com</email>
+            <name>William L. Thomson Jr.</name>
+        </owner>
+        <source type="git">https://github.com/Obsidian-StudiosInc/os-xtoo.git</source>
+    </repo>
+</repositories>
