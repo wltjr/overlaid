@@ -30,6 +30,7 @@ RDEPEND="dev-lang/perl[ithreads]
 	dev-perl/Email-Send
 	dev-perl/Email-Valid
 	dev-perl/File-ReadBackwards
+	dev-perl/HTML-Strip
 	dev-perl/IO-stringy
 	dev-perl/Lingua-Identify
 	dev-perl/Lingua-Stem-Snowball
