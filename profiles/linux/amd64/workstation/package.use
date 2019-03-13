@@ -60,8 +60,8 @@ media-gfx/imagemagick autotrace cxx pango
 media-gfx/sane-backends -v4l
 media-libs/flac cxx
 media-libs/freetype static-libs
-media-libs/gst-plugins-base theora
-media-libs/gst-plugins-bad -gles2
+media-libs/gst-plugins-base gles2 theora
+media-libs/gst-plugins-bad gles2
 media-libs/harfbuzz icu
 media-libs/imlib2 X
 media-libs/jpeg static-libs
