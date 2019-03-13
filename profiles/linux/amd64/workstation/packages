@@ -1,7 +1,7 @@
 *app-admin/ansible
 *app-admin/eselect
 *app-admin/hddtemp
-*app-admin/linode
+*app-admin/linode-cli
 *app-admin/logrotate
 *app-admin/makepasswd
 *app-admin/sudo
