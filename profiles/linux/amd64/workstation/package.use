@@ -1,7 +1,8 @@
 app-arch/bzip2 static-libs
-app-crypt/gcr gtk
+app-crypt/gcr gtk vala
 app-crypt/gpgme cxx
 app-crypt/heimdal -ssl -threads
+app-crypt/libsecret vala
 app-crypt/pinentry efl gnome3 gnome-keyring ncurses
 app-emulation/libvirt -libvirtd python -qemu
 app-emulation/libvirt-glib python
