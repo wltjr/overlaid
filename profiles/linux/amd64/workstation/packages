@@ -149,8 +149,8 @@
 *media-video/ushare
 *net-analyzer/iftop
 *net-analyzer/mtr
-*net-analyzer/netcat6
 *net-analyzer/nmap
+*net-analyzer/openbsd-netcat
 *net-analyzer/ssldump
 *net-analyzer/tcpdump
 *net-analyzer/traceroute
