@@ -28,8 +28,8 @@
 *app-editors/leafpad
 *app-editors/nano
 *app-emulation/virt-manager
-*app-emulation/virtualbox
-*app-emulation/virtualbox-additions
+#*app-emulation/virtualbox
+#*app-emulation/virtualbox-additions
 *app-misc/equate
 *app-misc/figlet
 *app-misc/screen
