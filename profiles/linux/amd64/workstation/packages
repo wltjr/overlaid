@@ -215,6 +215,7 @@
 *x11-apps/mesa-progs
 *x11-drivers/xf86-video-ati
 *x11-misc/clipboard
+*x11-misc/desksanity
 *x11-misc/emprint
 *x11-misc/entrance
 *x11-misc/read-edid
