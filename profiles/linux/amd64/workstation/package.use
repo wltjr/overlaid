@@ -90,7 +90,7 @@ net-libs/glib-networking -libproxy
 net-libs/opal sipim
 net-libs/ptlib http dtmf
 net-libs/webkit-gtk gstreamer -opengl
-net-misc/networkmanager dhclient -dhcpcd -modemmanager -nss -ppp
+net-misc/networkmanager dhclient -dhcpcd modemmanager -nss -ppp
 net-misc/openssh -X
 net-nds/openldap berkdb -gnutls odbc -minimal
 net-print/hplip snmp
