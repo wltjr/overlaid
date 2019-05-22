@@ -13,3 +13,6 @@ inherit e
 DESCRIPTION="Insanity for your E desktop"
 HOMEPAGE="${E_GIT_URI}/${E_TYPE}/${PN}.git"
 LICENSE="BSD"
+
+DEPEND="x11-wm/enlightenment:="
+RDEPEND="${DEPEND}"
