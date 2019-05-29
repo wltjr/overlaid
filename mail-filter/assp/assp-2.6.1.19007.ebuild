@@ -138,6 +138,10 @@ src_prepare() {
 		-e 's|$file.tmp","$base/$file"|$file.tmp","$file"|g' \
 		-e 's|$base/version.txt|/etc/assp/version.txt|g' \
 		-e 's|nointchk = '\''int'\''|nointchk = 1|g' \
+		-e 's|$base/$file" \|\| -s "$base/$file|$file" \|\| -s "$file|' \
+		-e 's|$base/$file") \|\| mlog(0,"error: unable to open $base/$file|$file") \|\| mlog(0,"error: unable to open $file|' \
+		-e 's|$base/$file for URIBLCCTLDS|$file for URIBLCCTLDS|g' \
+		-e 's|$base/$file updated for URIBLCCTLDS|$file updated for URIBLCCTLDS|' \
 		assp.pl || die
 
 	sed -i -e 's|$base/images|/usr/share/assp/images|g' \
