@@ -46,6 +46,7 @@ dev-libs/popt static-libs
 dev-libs/protobuf java
 dev-libs/pwlib ldap
 dev-libs/weston wayland-compositor xwayland
+dev-libs/xmlsec gcrypt nss
 dev-qt/qtcore icu
 dev-scheme/guile deprecated
 dev-util/android-studio-bin system-jvm
