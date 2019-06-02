@@ -18,22 +18,26 @@ else
 	MY_S="${MY_P}"
 fi
 
-inherit ${ECLASS}
+inherit ${ECLASS} flag-o-matic
 
 DESCRIPTION="Fairly comprehensive, modular and portable cryptographic toolkit"
 HOMEPAGE="https://www.libtom.com/"
 LICENSE="CC-PD"
 SLOT="0"
 
-DEPEND=""
+DEPEND="dev-libs/libtommath"
 
-RDEPEND=""
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_S}"
 
-src_prepare() {
-	default
-	mv makefile.unix makefile || die "Failed to replace makefile"
-	sed -i -e "s|/usr/local|${EPREFFIX}/usr|" \
-		makefile || die "Failed to change install dir"
+src_compile() {
+	# target all builds demos and test, should be under test USE flag
+	append-flags -DUSE_LTM -DLTM_DESC -fPIC
+	emake -f makefile.unix CFLAGS="${CFLAGS}" \
+		EXTRALIBS="${EPREFFIX}/usr/lib/libtommath.a"
+}
+
+src_install() {
+	emake -f makefile.unix PREFIX="${D}/usr" install
 }
