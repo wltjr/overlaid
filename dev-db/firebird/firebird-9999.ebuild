@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,6 +9,7 @@ else
 	MY_PN="R"
 fi
 MY_PV="${PV/_a/_A}"
+MY_PV="${PV/_b/_B}"
 MY_PV="${MY_PV//./_}"
 MY_P="${MY_PN}${MY_PV}"
 BASE_URI="https://github.com/FirebirdSQL/${PN}"
@@ -35,6 +36,7 @@ REQUIRED_USE="client? ( !xinetd )"
 
 CDEPEND="
 	dev-libs/libedit
+	dev-libs/libtomcrypt
 	dev-libs/libtommath
 	dev-libs/icu:=
 "
@@ -124,7 +126,6 @@ src_configure() {
 		--with-fblib=/usr/$(get_libdir) \
 		--with-fbinclude=/usr/include \
 		--with-fbdoc=/usr/share/doc/${P} \
-		--with-fbudf=${d}/UDF \
 		--with-fbsample=/usr/share/doc/${P}/examples \
 		--with-fbsample-db=/usr/share/doc/${P}/examples/db \
 		--with-fbhelp=${d}/help \
@@ -198,9 +199,6 @@ src_install() {
 	done
 	dodir ${d}/udr
 	dosym "${D}"/etc/${PN}/udr_engine.conf ${d}/plugins/udr_engine.conf
-
-	exeinto ${d}/UDF
-	doexe UDF/*.so
 
 	insinto /usr/share/${PN}/upgrade
 	doins -r "${S}"/src/misc/upgrade/*
