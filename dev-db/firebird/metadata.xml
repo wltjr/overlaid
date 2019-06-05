@@ -12,7 +12,7 @@
 	in production systems, under a variety of names, since 1981.
 	</longdescription>
 	<use>
-		<flag name="client">Install client library and header files only</flag>
+		<flag name="server">Install full server package, not just client libraries</flag>
 		<flag name="xinetd">Install ClassicServer</flag>
 	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2015-2019 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -19,8 +19,7 @@ LICENSE="IDPL Interbase-1.0"
 KEYWORDS="~amd64"
 SLOT="0"
 
-IUSE="doc client debug examples xinetd"
-REQUIRED_USE="client? ( !xinetd )"
+IUSE="doc debug examples +server xinetd"
 
 CDEPEND="
 	dev-libs/libedit
@@ -126,7 +125,7 @@ src_configure() {
 }
 
 src_install() {
-	local b bins p
+	local p
 
 	cd "${S}"/gen/Release/${PN} || die
 
@@ -149,21 +148,16 @@ src_install() {
 	insinto /usr/$(get_libdir)/${PN}
 	doins *.msg
 
-	use client && return
+	use server || return
 
 	einfo "Renaming isql -> fbsql"
-	mv bin/isql bin/fbsql || die
+	mv bin/isql bin/fbsql || die "Failed to rename isql -> fbsql"
 
-	bins=( fbsql fbsvcmgr fbtracemgr gbak gfix gpre gsec gsplit
-		gstat nbackup qli
-	)
-	for b in ${bins[@]}; do
-		dobin bin/${b}
-	done
+	dobin bin/fb{_config,sql,svcmgr,tracemgr}
+	dobin bin/g{bak,fix,pre,sec,split,stat}
+	dobin bin/{nbackup,qli}
 
-	for b in fbguard fb_lock_print firebird; do
-		dosbin bin/${b}
-	done
+	dosbin bin/f{b_lock_print,bguard,irebird}
 
 	exeinto /usr/bin/${PN}
 	exeopts -m0755
@@ -230,7 +224,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	use client && return
+	use server || return
 
 	# Hack to fix ownership/perms
 	chown -fR firebird:firebird "${ROOT}/etc/${PN}" "${ROOT}/usr/$(get_libdir)/${PN}"
@@ -238,7 +232,7 @@ pkg_postinst() {
 }
 
 pkg_config() {
-	use client && return
+	use server || return
 
 	# if found /etc/security2.gdb from previous install, backup, and restore as
 	# /etc/security3.fdb

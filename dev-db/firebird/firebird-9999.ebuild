@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2015-2019 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -31,8 +31,7 @@ HOMEPAGE="https://www.firebirdsql.org/"
 LICENSE="IDPL Interbase-1.0"
 SLOT="0"
 
-IUSE="client debug examples xinetd"
-REQUIRED_USE="client? ( !xinetd )"
+IUSE="debug examples +server xinetd"
 
 CDEPEND="
 	dev-libs/libedit
@@ -141,7 +140,7 @@ src_configure() {
 }
 
 src_install() {
-	local b bins d lib p plugins
+	local d lib p plugins
 
 	lib="/usr/$(get_libdir)"
 	d="${lib}/${PN}"
@@ -160,20 +159,15 @@ src_install() {
 	insinto ${d}
 	doins *.msg
 
-	use client && return
+	use server || return
 
-	mv bin/{i,fb}sql || die
+	mv bin/{i,fb}sql || die "Failed to rename isql -> fbsql"
 
-	bins=( fbsql fbsvcmgr fbtracemgr gbak gfix gpre gsec gsplit gstat
-		nbackup qli
-	)
-	for b in ${bins[@]}; do
-		dobin bin/${b}
-	done
+	dobin bin/fb{_config,sql,svcmgr,tracemgr}
+	dobin bin/g{bak,fix,pre,sec,split,stat}
+	dobin bin/{nbackup,qli}
 
-	for b in fbguard fb_lock_print firebird; do
-		dosbin bin/${b}
-	done
+	dosbin bin/f{b_lock_print,bguard,irebird}
 
 	exeinto /usr/bin/${PN}
 	exeopts -m0755
@@ -238,7 +232,7 @@ src_install() {
 }
 
 pkg_config() {
-	use client && return
+	use server || return
 	local d
 
 	d="${ROOT}/etc/${PN}"
