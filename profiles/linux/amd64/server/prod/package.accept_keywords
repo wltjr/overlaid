@@ -8,5 +8,7 @@ virtual/perl-Data-Dumper
 virtual/perl-ExtUtils-MakeMaker
 #virtual/perl-File-Path
 virtual/perl-File-Spec
+virtual/perl-IO
 virtual/perl-Test-Harness
+virtual/perl-version
 sys-boot/syslinux
