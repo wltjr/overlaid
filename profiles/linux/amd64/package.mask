@@ -1,3 +1,4 @@
+=dev-db/firebird-4*
 =dev-python/pycparser-2.19
 sys-fs/udev
 sys-kernel/gentoo-sources
