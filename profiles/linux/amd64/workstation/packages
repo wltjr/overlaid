@@ -201,6 +201,7 @@
 *sys-fs/extundelete
 *sys-fs/lvm2
 *sys-fs/mtpfs
+*sys-kernel/gentoo-sources
 *sys-power/acpi
 *sys-power/acpid
 *sys-power/cpupower
