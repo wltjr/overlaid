@@ -182,7 +182,7 @@
 *sys-apps/hwinfo
 *sys-apps/iproute2
 *sys-apps/less
-*sys-apps/lm_sensors
+*sys-apps/lm-sensors
 *sys-apps/mlocate
 *sys-apps/pciutils
 *sys-apps/pmount
