@@ -26,7 +26,7 @@ DEPEND="
 			sys-apps/systemd
 		)
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 "
 
 RDEPEND="${DEPEND}"
