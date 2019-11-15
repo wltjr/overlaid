@@ -1,10 +1,11 @@
-# Copyright 2017-2018 Obsidian-Studios, Inc.
+# Copyright 2017-2019 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 E_BASE_URI="https://github.com/vtorri/etui"
-E_SNAP="0459933cebb700f37ce726bf846ebb075c731651"
+E_BUILD="meson"
+E_SNAP="90910ba8aed6b3bdac1f54ae300457a7b98fd5cd"
 E_TARBALL="tar.gz"
 
 inherit e
@@ -20,7 +21,7 @@ DEPEND="
 	cb? ( app-arch/libarchive )
 	djvu? ( app-text/djvu )
 	pdf? (
-		app-text/mupdf
+		app-text/mupdf:=
 		media-libs/freetype
 		media-libs/openjpeg:2
 		sys-libs/zlib
@@ -34,15 +35,23 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	local u MY_CONF=( )
+	local u E_ECONF=( )
 	for u in ${IUSE}; do
-		if [[ "${u}" == "postscript" ]]; then
-			MY_CONF+=( $(use_enable postscript ps) )
-		else
-			MY_CONF+=( $(use_enable ${u/+/}) )
-		fi
+#		if [[ "${u}" == "postscript" ]]; then
+#			E_CONF+=( -D${u}=$(use_enable postscript ps) )
+#		else
+			E_ECONF+=( -D${u/+/}=$(usex ${u/+/} true false) )
+#		fi
 	done
-	use djvu && MY_CONF+=( --enable-gpl ) # hopefully temporary
-	use pdf && MY_CONF+=( --with-mupdf-shared-libs="-lmupdf" )
-	econf "${MY_CONF[@]}"
+	if use pdf; then
+		E_ECONF+=(
+			-Dlicense=agplv3
+			-Dmupdf=true
+			-Dmupdf-static-third=mupdf
+		)
+	elif use djvu; then
+		E_ECONF+=( -Dlicense=gplv2 )
+	fi
+
+	e_src_configure
 }
