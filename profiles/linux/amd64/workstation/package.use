@@ -61,6 +61,7 @@ media-gfx/exiv2 xmp
 media-gfx/gimp smp
 media-gfx/imagemagick autotrace cxx pango
 media-gfx/sane-backends -v4l
+media-libs/babl introspection
 media-libs/flac cxx
 media-libs/freetype static-libs
 media-libs/gst-plugins-base gles2 theora
