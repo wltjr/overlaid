@@ -50,6 +50,9 @@ dev-java/hibernate-validator-engine
 dev-java/icu4j
 dev-java/istack-commons-buildtools
 dev-java/j2objc-annotations
+dev-java/jackson-annotations
+dev-java/jackson-core
+dev-java/jackson-databind
 dev-java/jai-core-bin
 dev-java/jakarta-oro
 dev-java/jakarta-regexp
