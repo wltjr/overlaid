@@ -29,9 +29,9 @@ sys-devel/gdb python
 sys-libs/gdbm berkdb
 sys-libs/glibc debug -multiarch
 sys-libs/ldb -ldap -python
-sys-libs/ntdb python
-sys-libs/talloc python
-sys-libs/tdb python
-sys-libs/tevent python
+sys-libs/ntdb -python
+sys-libs/talloc -python
+sys-libs/tdb -python
+sys-libs/tevent -python
 sys-libs/zlib minizip static-libs
 virtual/jpeg static-libs
