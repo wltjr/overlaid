@@ -27,6 +27,7 @@
 *app-editors/hexedit
 *app-editors/leafpad
 *app-editors/nano
+*app-emulation/docker
 *app-emulation/virt-manager
 #*app-emulation/virtualbox
 #*app-emulation/virtualbox-additions
