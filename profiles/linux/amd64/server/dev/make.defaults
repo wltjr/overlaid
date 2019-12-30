@@ -11,6 +11,3 @@ dir env expires ext_filter filter headers http2 ident imagemap include info
 log_config logio mime mime_magic modules_dav negotiation proxy proxy_http
 rewrite setenvif so socache_shmcb speling status unixd unique_id userdir
 usertrack vhost_alias"
-
-PYTHON_TARGETS="python2_7 -python3_5 python3_6"
-PYTHON_SINGLE_TARGET="-python3_5 python3_6"
