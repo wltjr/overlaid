@@ -111,7 +111,7 @@ fi
 inherit eutils xdg-utils
 
 if [[ ! ${E_PYTHON} ]]; then
-	inherit epunt-cxx libtool
+	inherit libtool
 fi
 
 if [[ "${E_BUILD}" == "cmake" ]]; then
@@ -161,7 +161,6 @@ e_src_prepare() {
 		if [[ ${E_PV} == *9999* ]] || [[ ${E_SNAP} ]]; then
 			eautoreconf
 		fi
-		epunt_cxx
 		elibtoolize
 	fi
 }
