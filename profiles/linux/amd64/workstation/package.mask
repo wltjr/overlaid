@@ -1,3 +1,2 @@
 dev-java/icedtea-web
 =dev-java/java-config-2.2.1
-dev-lang/ruby:2.3
