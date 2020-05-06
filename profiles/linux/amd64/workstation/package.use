@@ -16,6 +16,7 @@ app-text/poppler cxx
 app-text/xmlto text
 dev-db/firebird server
 dev-db/sqlite secure-delete unlock-notify
+dev-haskell/quickcheck template_haskell
 dev-java/antlr cxx java
 dev-java/commons-fileupload doc
 dev-java/edtftpj doc
