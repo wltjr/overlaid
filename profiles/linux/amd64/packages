@@ -64,5 +64,4 @@
 *virtual/package-manager
 *virtual/pager
 *virtual/service-manager
-*virtual/shadow
 *virtual/ssh
