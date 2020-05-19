@@ -100,7 +100,7 @@ net-misc/openssh -X
 net-nds/openldap berkdb -gnutls odbc -minimal
 net-print/hplip snmp
 net-vpn/tinc upnp
-net-wireless/bluez pcmcia
+net-wireless/bluez deprecated mesh midi obex
 sys-apps/busybox mdev sep-usr static
 sys-apps/pciutils -zlib
 sys-apps/util-linux ncurses static-libs
