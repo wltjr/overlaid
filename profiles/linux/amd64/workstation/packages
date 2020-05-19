@@ -196,7 +196,6 @@
 *sys-boot/rockchip-mkbootimg
 *sys-boot/syslinux
 *sys-devel/gdb
-*sys-firmware/radeon-ucode
 *sys-fs/dosfstools
 *sys-fs/extundelete
 *sys-fs/lvm2
