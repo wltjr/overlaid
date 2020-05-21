@@ -3,7 +3,7 @@
 
 # no repackaging binaries
 case ${PN} in
-	*-bin | *-sources | adobe-flash)
+	*-bin | *-sources | adobe-flash | *-firmware | *-ucode)
 		FEATURES+=" -buildpkg"
 		;;
 esac
