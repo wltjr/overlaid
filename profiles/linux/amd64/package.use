@@ -1,4 +1,5 @@
 dev-db/firebird server
+dev-libs/libxml2 python
 dev-libs/openssl -sslv3
 net-misc/ntp openntpd
 sys-apps/busybox -pam
