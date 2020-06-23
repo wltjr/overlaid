@@ -35,12 +35,14 @@ dev-java/commons-logging
 dev-java/commons-net
 dev-java/commons-pool
 dev-java/commons-text
+dev-java/decimal-java
 dev-java/eclipse-ecj
 dev-java/eclipse-javax-persistence
 dev-java/edtftpj
 dev-java/error-prone-annotations
 dev-java/facebook4j
 dev-java/failureaccess
+dev-java/fop-core
 dev-java/glassfish-hk2-api
 dev-java/glassfish-hk2-locator
 dev-java/glassfish-hk2-osgi-resource-locator
