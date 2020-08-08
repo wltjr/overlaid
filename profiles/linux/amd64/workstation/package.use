@@ -56,7 +56,7 @@ dev-util/android-studio-bin system-jvm
 dev-vcs/cvs -server
 dev-vcs/git cvs gtk python subversion
 dev-vcs/subversion -dso -java -kde -kwallet perl
-gnome-extra/nm-applet -modemmanager
+gnome-extra/nm-applet appindicator -modemmanager
 mail-client/claws-mail archive calendar -libcanberra networkmanager ntp session startup-notification
 media-fonts/dejavu -fontforge -X
 media-gfx/exiv2 xmp
