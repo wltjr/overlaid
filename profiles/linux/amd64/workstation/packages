@@ -162,6 +162,8 @@
 *net-ftp/atftp
 *net-ftp/ftp
 *net-ftp/gftp
+*net-im/discord-bin
+*net-im/zoom
 *net-libs/gnutls
 *net-misc/freerdp
 *net-misc/iperf
