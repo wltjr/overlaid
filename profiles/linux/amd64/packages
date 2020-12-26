@@ -59,7 +59,6 @@
 *virtual/editor
 *virtual/libc
 *virtual/man
-*virtual/modutils
 *virtual/os-headers
 *virtual/package-manager
 *virtual/pager
