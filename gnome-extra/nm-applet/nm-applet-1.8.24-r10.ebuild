@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,6 +20,7 @@ RDEPEND="
 	>=dev-libs/glib-2.32:2[dbus]
 	>=dev-libs/dbus-glib-0.88
 	dev-libs/libappindicator:3
+	dev-libs/libgudev:=
 	>=dev-libs/libdbusmenu-16.04.0
 	>=sys-apps/dbus-1.4.1
 	>=sys-auth/polkit-0.96-r1
@@ -32,7 +33,6 @@ RDEPEND="
 
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
 	virtual/freedesktop-icon-theme
-	virtual/libgudev:=
 	gcr? ( >=app-crypt/gcr-3.14:= )
 	modemmanager? ( net-misc/modemmanager )
 	selinux? ( sys-libs/libselinux )
