@@ -12,6 +12,7 @@ media-libs/jpeg static-libs
 media-libs/libjpeg-turbo static-libs
 net-dns/bind geoip -odbc
 net-dns/bind-tools xml
+net-dns/dnsmasq script
 net-fs/cifs-utils -acl -ads
 net-fs/samba client
 net-irc/irssi perl
