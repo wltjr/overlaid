@@ -4,7 +4,7 @@ app-crypt/gpgme cxx
 app-crypt/heimdal -ssl -threads
 app-crypt/libsecret vala
 app-crypt/pinentry efl gnome3 gnome-keyring ncurses
-app-emulation/libvirt -libvirtd python -qemu
+app-emulation/libvirt libssh -libvirtd python -qemu
 app-emulation/libvirt-glib python
 app-emulation/qemu -fdt -filecaps -pin-upstream-blobs
 app-emulation/virt-manager -spice
