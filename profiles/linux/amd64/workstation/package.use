@@ -89,6 +89,7 @@ media-video/ffmpeg ebur128 encode opus theora
 media-video/mplayer iconv -pnm
 net-analyzer/mtr gtk
 net-analyzer/wireshark gtk
+net-dns/dnsmasq script
 net-ftp/gftp gtk
 net-fs/samba -aio client -cups -gpg system-mitkrb5
 net-libs/glib-networking -libproxy
