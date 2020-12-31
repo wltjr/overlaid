@@ -113,7 +113,7 @@ dev-java/log4j
 dev-java/log4j-api
 dev-java/mimepull
 dev-java/openpdf
-dev-java/openjdk-bin:13
+dev-java/openjdk-bin:15
 dev-java/osgi-annotation
 dev-java/osgi-compendium
 dev-java/osgi-core-api
