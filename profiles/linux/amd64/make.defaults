@@ -80,9 +80,10 @@ FEATURES="buildpkg"
 
 FETCHCOMMAND="/usr/bin/wget -t 1 -T 15 --passive-ftp \${URI} -O \${DISTDIR}/\${FILE}"
 RESUMECOMMAND="/usr/bin/wget -c -t 1 -T 15 --passive-ftp \${URI} -O \${DISTDIR}/\${FILE}"
-GENTOO_MIRRORS="http://gentoo.mirrors.pair.com/ \
-http://mirrors.tds.net/gentoo \
-http://distro.ibiblio.org/pub/linux/distributions/gentoo/"
+GENTOO_MIRRORS="
+	http://mirrors.tds.net/gentoo \
+	http://distro.ibiblio.org/pub/linux/distributions/gentoo/
+"
 
 INPUT_DEVICES="keyboard"
 
