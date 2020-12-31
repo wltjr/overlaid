@@ -63,7 +63,7 @@ PROFILE_ONLY_VARIABLES="${PROFILE_ONLY_VARIABLES} ELIBC IUSE_IMPLICIT KERNEL USE
 #
 # General config
 #
-USE="bzip2 caps cracklib -cxx crypt e2fsprogs -fortran gnutls http2 kmod ipv6
+USE="bzip2 caps -cxx crypt e2fsprogs -fortran gnutls http2 kmod ipv6
 multilib nfs pam pcre pic prefix readline seccomp split-usr ssh ssl tcpd threads udev
 unicode urandom xattr zlib"
 
