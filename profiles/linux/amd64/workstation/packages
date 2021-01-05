@@ -109,7 +109,6 @@
 *dev-util/shellcheck
 *dev-util/strace
 *dev-util/valgrind
-*dev-vcs/bzr
 *dev-vcs/cvs
 *dev-vcs/git
 *dev-vcs/mercurial
