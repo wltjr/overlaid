@@ -167,6 +167,7 @@
 *net-misc/iperf
 *net-misc/ntp
 *net-misc/openntpd
+*net-misc/rclone
 *net-misc/telnet-bsd
 *net-misc/tigervnc
 *net-misc/whois
