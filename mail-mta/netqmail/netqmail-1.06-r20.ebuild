@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,7 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="authcram gencertdaily highvolume ipv6 libressl pop3 qmail-spp ssl vanilla"
+IUSE="authcram gencertdaily highvolume ipv6 pop3 qmail-spp ssl vanilla"
 REQUIRED_USE="vanilla? ( !ssl !qmail-spp !highvolume )"
 RESTRICT="test"
 
@@ -58,10 +58,7 @@ DEPEND="
 	acct-user/qmails
 	net-dns/libidn2
 	net-mail/queue-repair
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.1:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( >=dev-libs/openssl-1.1:0= )
 	sys-apps/gentoo-functions
 	sys-apps/groff
 "
