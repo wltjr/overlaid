@@ -172,6 +172,7 @@
 *net-misc/tigervnc
 *net-misc/whois
 *net-print/cups
+*net-print/epson-inkjet-printer-escpr
 *net-print/hplip
 *net-wireless/wireless-tools
 *sys-apps/dmidecode
