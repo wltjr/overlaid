@@ -206,7 +206,6 @@
 *sys-power/acpi
 *sys-power/acpid
 *sys-power/cpupower
-*sys-power/pm-utils
 *sys-power/powertop
 *sys-process/at
 *sys-process/cronie
