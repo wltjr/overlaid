@@ -95,7 +95,7 @@ net-fs/samba -aio client -cups -gpg system-mitkrb5
 net-libs/glib-networking -libproxy
 net-libs/opal sipim
 net-libs/ptlib http dtmf
-net-libs/webkit-gtk gstreamer -opengl
+net-libs/webkit-gtk gstreamer opengl
 net-misc/networkmanager dhclient -dhcpcd modemmanager -nss -ppp
 net-misc/openssh -X
 net-nds/openldap berkdb -gnutls odbc -minimal
