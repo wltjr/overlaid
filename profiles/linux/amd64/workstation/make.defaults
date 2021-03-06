@@ -5,7 +5,7 @@ ACCEPT_KEYWORDS="~amd64"
 
 USE="X aalib acpi alsa -apache2 bzip2 \
      cairo crypt cups dbus directfb drm dvd encode ffmpeg \
-     flash firebird flac -fortran gsm -gpm javamail jpeg2k \
+     flash firebird flac -fortran gsm -gpm jpeg2k \
      libdrm mad -nas nptl offensive ogg openntpd -oss \
      samba scanner sdk ssl svg symlink \
      tiff truetype usb vorbis wmf zlib a52 expat \
@@ -63,8 +63,8 @@ LLVM_TARGETS="AMDGPU NVPTX X86"
 
 OFFICE_IMPLEMENTATION="openoffice"
 
-PYTHON_TARGETS="python2_7 -python3_5 python3_6"
-PYTHON_SINGLE_TARGET="-python3_5 python3_6"
+PYTHON_TARGETS="-python2_7 -python3_6 python3_8 -python3_9"
+PYTHON_SINGLE_TARGET="-python3_6 python3_8 -python3_9"
 
 SANE_BACKENDS="hp"
 
