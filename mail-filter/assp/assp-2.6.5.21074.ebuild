@@ -15,7 +15,7 @@ SLOT="0"
 
 KEYWORDS="~amd64"
 
-IUSE="ipv6 ldap sasl snmp spf srs ssl syslog"
+IUSE="ipv6 ldap sasl snmp spf ssl syslog"
 
 #	dev-perl/Schedule-Cron
 RDEPEND="dev-lang/perl[ithreads]
@@ -31,12 +31,12 @@ RDEPEND="dev-lang/perl[ithreads]
 	dev-perl/Email-Valid
 	dev-perl/File-ReadBackwards
 	dev-perl/HTML-Strip
-	dev-perl/IO-stringy
+	dev-perl/IO-stringy:*
 	dev-perl/Lingua-Identify
 	dev-perl/Lingua-Stem-Snowball
 	dev-perl/libwww-perl
-	dev-perl/Mail-DKIM
-	dev-perl/MIME-Types
+	dev-perl/Mail-DKIM:*
+	dev-perl/MIME-Types:*
 	dev-perl/MIME-tools
 	dev-perl/mime-construct
 	dev-perl/NetAddr-IP
@@ -60,8 +60,7 @@ RDEPEND="dev-lang/perl[ithreads]
 	sasl? ( dev-perl/Authen-SASL )
 	snmp? ( dev-perl/Net-SNMP )
 	spf? ( dev-perl/Mail-SPF )
-	srs? ( dev-perl/Mail-SRS )
-	ssl? ( dev-perl/IO-Socket-SSL
+	ssl? ( dev-perl/IO-Socket-SSL:*
 		dev-perl/Net-SMTP-SSL )
 	syslog? ( virtual/perl-Sys-Syslog )
 	ldap? ( dev-perl/perl-ldap )
