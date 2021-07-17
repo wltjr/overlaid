@@ -145,7 +145,7 @@ src_prepare() {
 			PATCHES+=( "${SPP_PATCH}" )
 		fi
 		if use ipv6; then
-			epatch "${FILESDIR}"/${PV}-ipv6.patch
+			PATCHES+=( "${FILESDIR}"/${PV}-ipv6-p[1-3].patch )
 		fi
 	fi
 

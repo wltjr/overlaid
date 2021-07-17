@@ -1,0 +1,384 @@
+This patch enables (net)qmail to send mail to remote SMTP hosts via IPv6.
+It may not apply cleanly to out-of-the-box netqmail.
+
+(C) 2011-2012 Peter Conrad <conrad@quisquis.de>
+
+This file is licensed under the terms of the
+GNU General Public License Version 2. A copy of these terms should be
+enclosed as "gpl-2.0.txt" in the package containing this file.
+
+diff -rNU3 netqmail-1.06/tcp-env.c netqmail-1.06-ipv6/tcp-env.c
+--- netqmail-1.06/tcp-env.c	2011-06-01 17:02:59.000000000 +0200
++++ netqmail-1.06-ipv6/tcp-env.c	2011-06-01 14:52:42.000000000 +0200
+@@ -16,14 +16,16 @@
+ #include "exit.h"
+ #include "case.h"
+ 
++static const unsigned char V4_MAPPED_PFX[] = "\0\0\0\0\0\0\0\0\0\0\377\377";
++
+ void die() { _exit(111); }
+ 
+-struct sockaddr_in salocal;
++struct sockaddr_in6 sa6local;
+ unsigned long localport;
+ struct ip_address iplocal;
+ stralloc localname = {0};
+ 
+-struct sockaddr_in saremote;
++struct sockaddr_in6 sa6remote;
+ unsigned long remoteport;
+ struct ip_address ipremote;
+ stralloc remotename = {0};
+@@ -39,6 +41,8 @@
+  int opt;
+  int flagremoteinfo;
+  unsigned long timeout;
++ struct sockaddr_in *sal = (struct sockaddr_in *) ((struct sockaddr *) &sa6local);
++ struct sockaddr_in *sar = (struct sockaddr_in *) ((struct sockaddr *) &sa6remote);
+ 
+  sig_pipeignore();
+ 
+@@ -59,20 +63,37 @@
+  if (!env_init()) die();
+ 
+  proto = env_get("PROTO");
+- if (!proto || str_diff(proto,"TCP"))
++ if (!proto || (str_diff(proto,"TCP") && str_diff(proto,"TCP6")))
+   {
+    if (!env_put("PROTO=TCP")) die();
+ 
+-   dummy = sizeof(salocal);
+-   if (getsockname(0,(struct sockaddr *) &salocal,&dummy) == -1) die();
++   dummy = sizeof(sa6local);
++   if (getsockname(0,(struct sockaddr *) &sa6local,&dummy) == -1) die();
++  if (dummy == sizeof(*sal)
++       || dummy == sizeof(sa6local) && byte_equal(V4_MAPPED_PFX, 12, &sa6local.sin6_addr)) {
++   if (dummy == sizeof(*sal)) {
++     localport = ntohs(sal->sin_port);
++     byte_copy(&iplocal.addr,4,&sal->sin_addr);
++   } else {
++     localport = ntohs(sa6local.sin6_port);
++     byte_copy(&iplocal.addr,4,&sa6local.sin6_addr.s6_addr[12]);
++   }
++   temp[fmt_ulong(temp,localport)] = 0;
++   if (!env_put2("TCPLOCALPORT",temp)) die();
+ 
+-   localport = ntohs(salocal.sin_port);
++   iplocal.type = AF_INET;
++   temp[ip_fmt(temp,&iplocal)] = 0;
++   if (!env_put2("TCPLOCALIP",temp)) die();
++  } else if (dummy == sizeof(sa6local)) {
++   localport = ntohs(sa6local.sin6_port);
+    temp[fmt_ulong(temp,localport)] = 0;
+    if (!env_put2("TCPLOCALPORT",temp)) die();
+ 
+-   byte_copy(&iplocal,4,&salocal.sin_addr);
++   iplocal.type = AF_INET6;
++   byte_copy(&iplocal.addr,16,&sa6local.sin6_addr);
+    temp[ip_fmt(temp,&iplocal)] = 0;
+    if (!env_put2("TCPLOCALIP",temp)) die();
++  }
+ 
+    switch(dns_ptr(&localname,&iplocal))
+     {
+@@ -88,16 +109,34 @@
+        if (!env_unset("TCPLOCALHOST")) die();
+     }
+ 
+-   dummy = sizeof(saremote);
+-   if (getpeername(0,(struct sockaddr *) &saremote,&dummy) == -1) die();
++   dummy = sizeof(sa6remote);
++   if (getpeername(0,(struct sockaddr *) &sa6remote,&dummy) == -1) die();
+ 
+-   remoteport = ntohs(saremote.sin_port);
++  if (dummy == sizeof(*sar)
++       || dummy == sizeof(sa6remote)  && byte_equal(V4_MAPPED_PFX, 12, &sa6remote.sin6_addr)) {
++   if (dummy == sizeof(*sar)) {
++     remoteport = ntohs(sar->sin_port);
++     byte_copy(&ipremote.addr,4,&sar->sin_addr);
++   } else {
++     remoteport = ntohs(sa6remote.sin6_port);
++     byte_copy(&ipremote.addr,4,&sa6remote.sin6_addr.s6_addr[12]);
++   }
++   temp[fmt_ulong(temp,remoteport)] = 0;
++   if (!env_put2("TCPREMOTEPORT",temp)) die();
++
++   ipremote.type = AF_INET;
++   temp[ip_fmt(temp,&ipremote)] = 0;
++   if (!env_put2("TCPREMOTEIP",temp)) die();
++  } else if (dummy == sizeof(sa6remote)) {
++   remoteport = ntohs(sa6remote.sin6_port);
+    temp[fmt_ulong(temp,remoteport)] = 0;
+    if (!env_put2("TCPREMOTEPORT",temp)) die();
+ 
+-   byte_copy(&ipremote,4,&saremote.sin_addr);
++   ipremote.type = AF_INET6;
++   byte_copy(&ipremote.addr,16,&sa6remote.sin6_addr);
+    temp[ip_fmt(temp,&ipremote)] = 0;
+    if (!env_put2("TCPREMOTEIP",temp)) die();
++  }
+ 
+    switch(dns_ptr(&remotename,&ipremote))
+     {
+diff -rNU3 netqmail-1.06/tcpto.c netqmail-1.06-ipv6/tcpto.c
+--- netqmail-1.06/tcpto.c	2011-06-01 17:02:59.000000000 +0200
++++ netqmail-1.06-ipv6/tcpto.c	2011-06-01 14:52:42.000000000 +0200
+@@ -1,3 +1,4 @@
++#include <sys/socket.h>
+ #include "tcpto.h"
+ #include "open.h"
+ #include "lock.h"
+@@ -8,7 +8,7 @@
+ #include "datetime.h"
+ #include "readwrite.h"
+ 
+-char tcpto_buf[1024];
++char tcpto_buf[2048];
+ 
+ static int flagwasthere;
+ static int fdlock;
+@@ -26,8 +26,11 @@
+  r = read(fd,tcpto_buf,sizeof(tcpto_buf));
+  close(fd);
+  if (r < 0) { close(fdlock); return 0; }
+- r >>= 4;
+- if (!r) close(fdlock);
++ if (r < sizeof(tcpto_buf)) {
++   byte_zero(tcpto_buf, sizeof(tcpto_buf));
++   r = sizeof(tcpto_buf);
++ }
++ r >>= 5;
+  return r;
+ }
+ 
+@@ -47,22 +50,22 @@
+  record = tcpto_buf;
+  for (i = 0;i < n;++i)
+   {
+-   if (byte_equal(ip->d,4,record))
++   if (ip->type == record[0] && byte_equal(ip->addr, ip->type == AF_INET ? 4 : 16, record+1))
+     {
+      flagwasthere = 1;
+-     if (record[4] >= 2)
++     if (record[17] >= 2)
+       {
+-       when = (unsigned long) (unsigned char) record[11];
+-       when = (when << 8) + (unsigned long) (unsigned char) record[10];
+-       when = (when << 8) + (unsigned long) (unsigned char) record[9];
+-       when = (when << 8) + (unsigned long) (unsigned char) record[8];
++       when = (unsigned long) (unsigned char) record[23];
++       when = (when << 8) + (unsigned long) (unsigned char) record[22];
++       when = (when << 8) + (unsigned long) (unsigned char) record[21];
++       when = (when << 8) + (unsigned long) (unsigned char) record[20];
+ 
+        if (now() - when < ((60 + (getpid() & 31)) << 6))
+ 	 return 1;
+       }
+      return 0;
+     }
+-   record += 16;
++   record += 32;
+   }
+  return 0;
+ }
+@@ -87,33 +90,33 @@
+  record = tcpto_buf;
+  for (i = 0;i < n;++i)
+   {
+-   if (byte_equal(ip->d,4,record))
++   if (ip->type == record[0] && byte_equal(ip->addr, ip->type == AF_INET ? 4 : 16, record+1))
+     {
+      if (!flagerr)
+-       record[4] = 0;
++       record[17] = 0;
+      else
+       {
+-       lastwhen = (unsigned long) (unsigned char) record[11];
+-       lastwhen = (lastwhen << 8) + (unsigned long) (unsigned char) record[10];
+-       lastwhen = (lastwhen << 8) + (unsigned long) (unsigned char) record[9];
+-       lastwhen = (lastwhen << 8) + (unsigned long) (unsigned char) record[8];
++       lastwhen = (unsigned long) (unsigned char) record[23];
++       lastwhen = (lastwhen << 8) + (unsigned long) (unsigned char) record[22];
++       lastwhen = (lastwhen << 8) + (unsigned long) (unsigned char) record[21];
++       lastwhen = (lastwhen << 8) + (unsigned long) (unsigned char) record[20];
+        when = now();
+ 
+-       if (record[4] && (when < 120 + lastwhen)) { close(fdlock); return; }
++       if (record[17] && (when < 120 + lastwhen)) { close(fdlock); return; }
+ 
+-       if (++record[4] > 10) record[4] = 10;
+-       record[8] = when; when >>= 8;
+-       record[9] = when; when >>= 8;
+-       record[10] = when; when >>= 8;
+-       record[11] = when;
++       if (++record[17] > 10) record[17] = 10;
++       record[20] = when; when >>= 8;
++       record[21] = when; when >>= 8;
++       record[22] = when; when >>= 8;
++       record[23] = when;
+       }
+-     if (seek_set(fdlock,i << 4) == 0)
+-       if (write(fdlock,record,16) < 16)
++     if (seek_set(fdlock,i << 5) == 0)
++       if (write(fdlock,record,32) < 32)
+          ; /*XXX*/
+      close(fdlock);
+      return;
+     }
+-   record += 16;
++   record += 32;
+   }
+ 
+  if (!flagerr) { close(fdlock); return; }
+@@ -121,8 +124,8 @@
+  record = tcpto_buf;
+  for (i = 0;i < n;++i)
+   {
+-   if (!record[4]) break;
+-   record += 16;
++   if (!record[17]) break;
++   record += 32;
+   }
+ 
+  if (i >= n)
+@@ -131,33 +134,34 @@
+    record = tcpto_buf;
+    for (i = 0;i < n;++i)
+     {
+-     when = (unsigned long) (unsigned char) record[11];
+-     when = (when << 8) + (unsigned long) (unsigned char) record[10];
+-     when = (when << 8) + (unsigned long) (unsigned char) record[9];
+-     when = (when << 8) + (unsigned long) (unsigned char) record[8];
+-     when += (record[4] << 10);
++     when = (unsigned long) (unsigned char) record[23];
++     when = (when << 8) + (unsigned long) (unsigned char) record[22];
++     when = (when << 8) + (unsigned long) (unsigned char) record[21];
++     when = (when << 8) + (unsigned long) (unsigned char) record[20];
++     when += (record[17] << 10);
+      if ((firstpos < 0) || (when < firstwhen))
+       {
+        firstpos = i;
+        firstwhen = when;
+       }
+-     record += 16;
++     record += 32;
+     }
+    i = firstpos;
+   }
+ 
+  if (i >= 0)
+   {
+-   record = tcpto_buf + (i << 4);
+-   byte_copy(record,4,ip->d);
++   record = tcpto_buf + (i << 5);
++   record[0] = ip->type;
++   byte_copy(record+1,ip->type == AF_INET ? 4 : 16,ip->addr);
+    when = now();
+-   record[8] = when; when >>= 8;
+-   record[9] = when; when >>= 8;
+-   record[10] = when; when >>= 8;
+-   record[11] = when;
+-   record[4] = 1;
+-   if (seek_set(fdlock,i << 4) == 0)
+-     if (write(fdlock,record,16) < 16)
++   record[20] = when; when >>= 8;
++   record[21] = when; when >>= 8;
++   record[22] = when; when >>= 8;
++   record[23] = when;
++   record[17] = 1;
++   if (seek_set(fdlock,i << 5) == 0)
++     if (write(fdlock,record,32) < 32)
+        ; /*XXX*/
+   }
+ 
+diff -rNU3 netqmail-1.06/timeoutconn.c netqmail-1.06-ipv6/timeoutconn.c
+--- netqmail-1.06/timeoutconn.c	2011-06-01 17:02:59.000000000 +0200
++++ netqmail-1.06-ipv6/timeoutconn.c	2011-06-01 14:52:42.000000000 +0200
+@@ -18,21 +18,36 @@
+ {
+   char ch;
+   struct sockaddr_in sin;
++  struct sockaddr_in6 sin6;
++  struct sockaddr *sa;
++  socklen_t sa_len;
+   char *x;
+   fd_set wfds;
+   struct timeval tv;
+- 
++
++ if (ip->type == AF_INET) { 
+   byte_zero(&sin,sizeof(sin));
+-  byte_copy(&sin.sin_addr,4,ip);
++  byte_copy(&sin.sin_addr,4,ip->addr);
+   x = (char *) &sin.sin_port;
+   x[1] = port; port >>= 8; x[0] = port;
+   sin.sin_family = AF_INET;
++  sa = (struct sockaddr *) &sin;
++  sa_len = sizeof(sin);
++ } else {
++  byte_zero(&sin6,sizeof(sin6));
++  byte_copy(&sin6.sin6_addr,16,ip->addr);
++  x = (char *) &sin6.sin6_port;
++  x[1] = port; port >>= 8; x[0] = port;
++  sin6.sin6_family = AF_INET6;
++  sa = (struct sockaddr *) &sin6;
++  sa_len = sizeof(sin6);
++ }
+  
+   if (ndelay_on(s) == -1) return -1;
+  
+   /* XXX: could bind s */
+  
+-  if (connect(s,(struct sockaddr *) &sin,sizeof(sin)) == 0) {
++  if (connect(s, sa, sa_len) == 0) {
+     ndelay_off(s);
+     return 0;
+   }
+@@ -44,9 +59,7 @@
+  
+   if (select(s + 1,(fd_set *) 0,&wfds,(fd_set *) 0,&tv) == -1) return -1;
+   if (FD_ISSET(s,&wfds)) {
+-    int dummy;
+-    dummy = sizeof(sin);
+-    if (getpeername(s,(struct sockaddr *) &sin,&dummy) == -1) {
++    if (getpeername(s, sa, &sa_len) == -1) {
+       read(s,&ch,1);
+       return -1;
+     }
+diff -rNU3 netqmail-1.06/tcpto_clean.c netqmail-1.06-ipv6/tcpto_clean.c
+--- netqmail-1.06/tcpto_clean.c 1998-06-15 12:53:16.000000000 +0200
++++ netqmail-1.06-ipv6/tcpto_clean.c    2011-07-15 15:39:21.000000000 +0200
+@@ -3,7 +3,7 @@
+ #include "substdio.h"
+ #include "readwrite.h"
+ 
+-char tcpto_cleanbuf[1024];
++char tcpto_cleanbuf[2048];
+ 
+ void tcpto_clean() /* running from queue/mess */
+ {
+diff -rU3 netqmail-1.06/qmail-tcpok.c netqmail-1.06.ipv6/qmail-tcpok.c
+--- netqmail-1.06/qmail-tcpok.c	1998-06-15 12:53:16.000000000 +0200
++++ netqmail-1.06.ipv6/qmail-tcpok.c	2012-01-24 12:02:34.000000000 +0100
+@@ -8,7 +8,7 @@
+ 
+ #define FATAL "qmail-tcpok: fatal: "
+ 
+-char buf[1024]; /* XXX: must match size in tcpto_clean.c, tcpto.c */
++char buf[2048]; /* XXX: must match size in tcpto_clean.c, tcpto.c */
+ substdio ss;
+ 
+ void main()
+diff -rU3 netqmail-1.06/qmail-tcpto.c netqmail-1.06.ipv6/qmail-tcpto.c
+--- netqmail-1.06/qmail-tcpto.c	2012-01-24 12:17:52.000000000 +0100
++++ netqmail-1.06.ipv6/qmail-tcpto.c	2012-01-24 12:17:33.000000000 +0100
+@@ -82,7 +82,7 @@
+      substdio_put(subfdout,tmp,fmt_ulong(tmp,(unsigned long) (unsigned char) record[17]));
+      substdio_puts(subfdout,"\n");
+     }
+-   record += 16;
++   record += 32;
+   }
+ 
+  die(0);
+

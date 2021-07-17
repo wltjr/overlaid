@@ -1,0 +1,318 @@
+This patch enables (net)qmail to send mail to remote SMTP hosts via IPv6.
+It may not apply cleanly to out-of-the-box netqmail.
+
+(C) 2011-2012 Peter Conrad <conrad@quisquis.de>
+
+This file is licensed under the terms of the
+GNU General Public License Version 2. A copy of these terms should be
+enclosed as "gpl-2.0.txt" in the package containing this file.
+
+diff -rNU3 netqmail-1.06/ipme.c netqmail-1.06-ipv6/ipme.c
+--- netqmail-1.06/ipme.c	2011-06-01 17:02:59.000000000 +0200
++++ netqmail-1.06-ipv6/ipme.c	2011-06-01 14:52:42.000000000 +0200
+@@ -24,7 +24,8 @@
+   int i;
+   if (ipme_init() != 1) return -1;
+   for (i = 0;i < ipme.len;++i)
+-    if (byte_equal(&ipme.ix[i].ip,4,ip))
++    if (ip->type == ipme.ix[i].ip.type
++         && byte_equal(&ipme.ix[i].ip.addr,ip->type == AF_INET ? 4 : 16,ip->addr))
+       return 1;
+   return 0;
+ }
+@@ -37,8 +38,9 @@
+   char *x;
+   struct ifreq *ifr;
+   struct sockaddr_in *sin;
++  struct sockaddr_in6 *sin6;
+   int len;
+-  int s;
++  int s, family;
+   struct ip_mx ix;
+
+   if (ipmeok) return 1;
+@@ -49,9 +51,17 @@
+   /* 0.0.0.0 is a special address which always refers to
+    * "this host, this network", according to RFC 1122, Sec. 3.2.1.3a.
+   */
+-  byte_copy(&ix.ip,4,"\0\0\0\0");
++  ix.ip.type = AF_INET;
++  byte_zero(&ix.ip.addr,16);
+   if (!ipalloc_append(&ipme,&ix)) { return 0; }
+-  if ((s = socket(AF_INET,SOCK_STREAM,0)) == -1) return -1;
++  /* same for :: in ipv6 */
++  ix.ip.type = AF_INET6;
++  if (!ipalloc_append(&ipme,&ix)) { return 0; }
++ for (family = 0; family < 2; family++) {
++  if ((s = socket(family ? AF_INET : AF_INET6, SOCK_STREAM,0)) == -1) {
++    if (!family) { continue; }
++    return -1;
++  }
+
+   len = 256;
+   for (;;) {
+@@ -76,7 +86,15 @@
+       len = sizeof(*ifr);
+     if (ifr->ifr_addr.sa_family == AF_INET) {
+       sin = (struct sockaddr_in *) &ifr->ifr_addr;
+-      byte_copy(&ix.ip,4,&sin->sin_addr);
++      ix.ip.type = AF_INET;
++      byte_copy(&ix.ip.addr,4,&sin->sin_addr);
++      if (ioctl(s,SIOCGIFFLAGS,x) == 0)
++        if (ifr->ifr_flags & IFF_UP)
++          if (!ipalloc_append(&ipme,&ix)) { close(s); return 0; }
++    } else if (ifr->ifr_addr.sa_family == AF_INET6) {
++      sin6 = (struct sockaddr_in6 *) &ifr->ifr_addr;
++      ix.ip.type = AF_INET6;
++      byte_copy(&ix.ip.addr,16,&sin6->sin6_addr);
+       if (ioctl(s,SIOCGIFFLAGS,x) == 0)
+         if (ifr->ifr_flags & IFF_UP)
+           if (!ipalloc_append(&ipme,&ix)) { close(s); return 0; }
+@@ -95,6 +113,7 @@
+     x += len;
+   }
+   close(s);
++ }
+   ipmeok = 1;
+   return 1;
+ }
+diff -rNU3 netqmail-1.06/Makefile netqmail-1.06-ipv6/Makefile
+--- netqmail-1.06/Makefile	2011-06-01 17:02:59.000000000 +0200
++++ netqmail-1.06-ipv6/Makefile	2011-06-01 14:51:26.000000000 +0200
+@@ -577,6 +577,10 @@
+ compile fmt_ulong.c fmt.h
+ 	./compile fmt_ulong.c
+ 
++fmt_xlong.o: \
++compile fmt_xlong.c fmt.h
++	./compile fmt_xlong.c
++
+ fmtqfn.o: \
+ compile fmtqfn.c fmtqfn.h fmt.h auto_split.h
+ 	./compile fmtqfn.c
+@@ -609,9 +613,10 @@
+ 
+ fs.a: \
+ makelib fmt_str.o fmt_strn.o fmt_uint.o fmt_uint0.o fmt_ulong.o \
+-scan_ulong.o scan_8long.o
++scan_ulong.o scan_8long.o \
++fmt_xlong.o scan_xlong.o
+ 	./makelib fs.a fmt_str.o fmt_strn.o fmt_uint.o fmt_uint0.o \
+-	fmt_ulong.o scan_ulong.o scan_8long.o
++	fmt_ulong.o scan_ulong.o scan_8long.o fmt_xlong.o scan_xlong.o
+ 
+ getln.a: \
+ makelib getln.o getln2.o
+@@ -1711,6 +1716,10 @@
+ compile scan_ulong.c scan.h
+ 	./compile scan_ulong.c
+ 
++scan_xlong.o: \
++compile scan_xlong.c scan.h
++	./compile scan_xlong.c
++
+ seek.a: \
+ makelib seek_cur.o seek_end.o seek_set.o seek_trunc.o
+ 	./makelib seek.a seek_cur.o seek_end.o seek_set.o \
+diff -rNU3 netqmail-1.06/qmail-remote.8 netqmail-1.06-ipv6/qmail-remote.8
+--- netqmail-1.06/qmail-remote.8	2011-06-01 17:02:59.000000000 +0200
++++ netqmail-1.06-ipv6/qmail-remote.8	2011-06-01 16:38:49.000000000 +0200
+@@ -238,6 +238,13 @@
+ .B tlshosts/<FQDN>.pem
+ exists.
+ 
++.TP 5
++.I useipv6
++If this file contains a non-zero integer,
++.B qmail-remote
++will lookup AAAA records (in addition to the standard A records) and
++attempt to connect the resulting IPv6 address, if found.
++
+ .SH "SEE ALSO"
+ addresses(5),
+ envelopes(5),
+diff -rNU3 netqmail-1.06/qmail-remote.c netqmail-1.06-ipv6/qmail-remote.c
+--- netqmail-1.06/qmail-remote.c	2011-06-01 17:02:59.000000000 +0200
++++ netqmail-1.06-ipv6/qmail-remote.c	2011-06-01 16:26:06.000000000 +0200
+@@ -59,6 +59,8 @@
+ const char *ssl_err_str = 0;
+ #endif 
+ 
++int flagv6;
++
+ void out(s) char *s; { if (substdio_puts(subfdoutsmall,s) == -1) _exit(0); }
+ void zero() { if (substdio_put(subfdoutsmall,"\0",1) == -1) _exit(0); }
+ void zerodie() { zero(); substdio_flush(subfdoutsmall); _exit(0); }
+@@ -679,6 +681,9 @@
+     case 1:
+       if (!constmap_init(&maproutes,routes.s,routes.len,1)) temp_nomem(); break;
+   }
++  if (control_readint(&flagv6,"control/useipv6") == -1) {
++    flagv6 = 0;
++  }
+ }
+ 
+ void main(argc,argv)
+@@ -699,6 +704,7 @@
+   if (chdir(auto_qmail) == -1) temp_chdir();
+   getcontrols();
+  
++  dns_init(0, flagv6);
+  
+   if (!stralloc_copys(&host,argv[1])) temp_nomem();
+  
+@@ -710,8 +716,9 @@
+   if (relayhost && !*relayhost) relayhost = 0;
+  
+   if (relayhost) {
++    int r_bracket = str_rchr(relayhost,']');
+     i = str_chr(relayhost,':');
+-    if (relayhost[i]) {
++    if (relayhost[i] && (i > r_bracket || !relayhost[r_bracket])) {
+       scan_ulong(relayhost + i + 1,&port);
+       relayhost[i] = 0;
+     }
+@@ -766,7 +773,7 @@
+   for (i = 0;i < ip.len;++i) if (ip.ix[i].pref < prefme) {
+     if (tcpto(&ip.ix[i].ip)) continue;
+  
+-    smtpfd = socket(AF_INET,SOCK_STREAM,0);
++    smtpfd = socket(ip.ix[i].ip.type,SOCK_STREAM,0);
+     if (smtpfd == -1) temp_oserr();
+  
+     if (timeoutconn(smtpfd,&ip.ix[i].ip,(unsigned int) port,timeoutconnect) == 0) {
+@@ -1006,4 +1007,5 @@
+   }
+   
+   temp_noconn();
++  _exit(0); // never reached
+ }
+diff -rNU3 netqmail-1.06/qmail-tcpto.c netqmail-1.06-ipv6/qmail-tcpto.c
+--- netqmail-1.06/qmail-tcpto.c	2011-06-01 17:02:59.000000000 +0200
++++ netqmail-1.06-ipv6/qmail-tcpto.c	2011-06-01 14:52:42.000000000 +0200
+@@ -1,5 +1,6 @@
+ /* XXX: this program knows quite a bit about tcpto's internals */
+ 
++#include <sys/socket.h>
+ #include "substdio.h"
+ #include "subfd.h"
+ #include "auto_qmail.h"
+@@ -28,7 +28,7 @@
+ void die_lock() { warn("fatal: unable to lock tcpto"); die(111); }
+ void die_read() { warn("fatal: unable to read tcpto"); die(111); }
+ 
+-char tcpto_buf[1024];
++char tcpto_buf[2048];
+ 
+ char tmp[FMT_ULONG + IPFMT];
+ 
+@@ -56,26 +56,30 @@
+  close(fdlock);
+ 
+  if (r == -1) die_read();
+- r >>= 4;
++ if (r < sizeof(tcpto_buf)) {
++    substdio_puts(subfderr,"WARNING: tcpto probably has old (IPv4-only) format. Output may be garbled.\n");
++ }
++ r >>= 5;
+ 
+  start = now();
+ 
+  record = tcpto_buf;
+  for (i = 0;i < r;++i)
+   {
+-   if (record[4] >= 1)
++   if (record[17] >= 1)
+     {
+-     byte_copy(&ip,4,record);
+-     when = (unsigned long) (unsigned char) record[11];
+-     when = (when << 8) + (unsigned long) (unsigned char) record[10];
+-     when = (when << 8) + (unsigned long) (unsigned char) record[9];
+-     when = (when << 8) + (unsigned long) (unsigned char) record[8];
++     ip.type = record[0];
++     byte_copy(&ip.addr, ip.type == AF_INET ? 4 : 16,record+1);
++     when = (unsigned long) (unsigned char) record[23];
++     when = (when << 8) + (unsigned long) (unsigned char) record[22];
++     when = (when << 8) + (unsigned long) (unsigned char) record[21];
++     when = (when << 8) + (unsigned long) (unsigned char) record[20];
+ 
+      substdio_put(subfdout,tmp,ip_fmt(tmp,&ip));
+      substdio_puts(subfdout," timed out ");
+      substdio_put(subfdout,tmp,fmt_ulong(tmp,(unsigned long) (start - when)));
+      substdio_puts(subfdout," seconds ago; # recent timeouts: ");
+-     substdio_put(subfdout,tmp,fmt_ulong(tmp,(unsigned long) (unsigned char) record[4]));
++     substdio_put(subfdout,tmp,fmt_ulong(tmp,(unsigned long) (unsigned char) record[17]));
+      substdio_puts(subfdout,"\n");
+     }
+    record += 16;
+diff -rNU3 netqmail-1.06/remoteinfo.c netqmail-1.06-ipv6/remoteinfo.c
+--- netqmail-1.06/remoteinfo.c	2011-06-01 17:02:59.000000000 +0200
++++ netqmail-1.06-ipv6/remoteinfo.c	2011-06-01 14:52:42.000000000 +0200
+@@ -31,8 +31,10 @@
+ int timeout;
+ {
+   char *x;
+-  int s;
++  int s, sa_len;
++  struct sockaddr *sa;
+   struct sockaddr_in sin;
++  struct sockaddr_in6 sin6;
+   substdio ss;
+   char buf[32];
+   unsigned int len;
+@@ -41,14 +43,24 @@
+ 
+   t = timeout;
+  
+-  s = socket(AF_INET,SOCK_STREAM,0);
++  s = socket(ipl->type,SOCK_STREAM,0);
+   if (s == -1) return 0;
+- 
+-  byte_zero(&sin,sizeof(sin));
++ if (ipl->type == AF_INET) {
++  sa_len = sizeof(sin); 
++  byte_zero(&sin,sa_len);
+   sin.sin_family = AF_INET;
+-  byte_copy(&sin.sin_addr,4,ipl);
++  byte_copy(&sin.sin_addr,4,ipl->addr);
+   sin.sin_port = 0;
+-  if (bind(s,(struct sockaddr *) &sin,sizeof(sin)) == -1) { close(s); return 0; }
++  sa = (struct sockaddr *) &sin;
++ } else {
++  sa_len = sizeof(sin6); 
++  byte_zero(&sin6,sa_len);
++  sin6.sin6_family = AF_INET6;
++  byte_copy(&sin6.sin6_addr,16,ipl->addr);
++  sin6.sin6_port = 0;
++  sa = (struct sockaddr *) &sin6;
++ }
++  if (bind(s,sa, sa_len) == -1) { close(s); return 0; }
+   if (timeoutconn(s,ipr,113,timeout) == -1) { close(s); return 0; }
+   fcntl(s,F_SETFL,fcntl(s,F_GETFL,0) & ~O_NDELAY);
+  
+diff -rNU3 netqmail-1.06/scan_xlong.c netqmail-1.06-ipv6/scan_xlong.c
+--- netqmail-1.06/scan_xlong.c	1970-01-01 01:00:00.000000000 +0100
++++ netqmail-1.06-ipv6/scan_xlong.c	2011-06-01 14:51:26.000000000 +0200
+@@ -0,0 +1,13 @@
++#include "scan.h"
++
++unsigned int scan_xlong(const char *s, unsigned long *u)
++{
++  register unsigned int pos; register unsigned long result;
++  register unsigned long c;
++  pos = 0; result = 0;
++  while ((c = (unsigned long) (unsigned char) (s[pos] - '0')) < 10
++	 || (c = (unsigned long) (unsigned char) (s[pos] - 'a' + 10)) < 16 && c >= 10
++	 || (c = (unsigned long) (unsigned char) (s[pos] - 'A' + 10)) < 16 && c >= 10)
++    { result = result * 16 + c; ++pos; }
++  *u = result; return pos;
++}
+diff -rNU3 netqmail-1.06/TARGETS netqmail-1.06-ipv6/TARGETS
+--- netqmail-1.06/TARGETS	2011-06-01 17:02:59.000000000 +0200
++++ netqmail-1.06-ipv6/TARGETS	2011-06-01 14:51:26.000000000 +0200
+@@ -389,3 +389,5 @@
+ setup
+ check
+ update_tmprsadh
++fmt_xlong.o
++scan_xlong.o
