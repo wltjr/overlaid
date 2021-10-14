@@ -68,4 +68,6 @@ PYTHON_SINGLE_TARGET="-python3_6 python3_8 -python3_9"
 
 SANE_BACKENDS="hp"
 
+VIDEO_CARDS="i915 intel radeon"
+
 MAKEOPTS="-j3"
