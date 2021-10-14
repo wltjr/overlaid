@@ -59,6 +59,7 @@ dev-java/jackson-databind
 dev-java/jai-core-bin
 dev-java/jakarta-oro
 dev-java/jakarta-regexp
+dev-java/jakarta-xml-bind-api
 dev-java/java-config
 dev-java/java-cup
 dev-java/javamail
