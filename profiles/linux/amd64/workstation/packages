@@ -112,7 +112,7 @@
 *dev-vcs/git
 *dev-vcs/mercurial
 *dev-vcs/rcs
-*gnome-base/libgnome-keyring
+#*gnome-base/libgnome-keyring
 *gnome-extra/nm-applet
 *kde-frameworks/oxygen-icons
 *mail-mta/ssmtp
