@@ -195,7 +195,7 @@
 *sys-apps/usbutils
 *sys-apps/vbetool
 *sys-block/ms-sys
-*sys-boot/rockchip-mkbootimg
+#*sys-boot/rockchip-mkbootimg
 *sys-boot/syslinux
 *sys-devel/gdb
 *sys-fs/dosfstools
