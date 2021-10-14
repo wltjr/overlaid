@@ -52,6 +52,7 @@
 *app-text/etui
 *app-text/ghostscript-gpl
 *app-text/htmltidy
+*app-text/pdftk
 *dev-db/flamerobin
 *dev-db/odbcfb
 *dev-java/commonmark-parent
