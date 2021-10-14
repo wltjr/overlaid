@@ -27,8 +27,8 @@
 *dev-java/jtsys
 *dev-java/openpdf
 *dev-java/recaptcha4j
-*dev-java/scribejava-apis
-*dev-java/scribejava-core
+#*dev-java/scribejava-apis
+#*dev-java/scribejava-core
 *media-gfx/imagemagick
 *www-apache/mod_jk
 *www-servers/apache
