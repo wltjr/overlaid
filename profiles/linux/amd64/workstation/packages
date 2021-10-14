@@ -28,6 +28,7 @@
 *app-editors/leafpad
 *app-editors/nano
 *app-emulation/docker
+*app-emulation/mars-bin
 *app-emulation/virt-manager
 #*app-emulation/virtualbox
 #*app-emulation/virtualbox-additions
