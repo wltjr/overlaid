@@ -32,5 +32,5 @@
 *media-gfx/imagemagick
 *www-apache/mod_jk
 *www-servers/apache
-*www-servers/tomcat
+*www-servers/tomcat:9
 
