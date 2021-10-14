@@ -96,6 +96,7 @@
 *dev-java/scribejava-apis
 *dev-java/scribejava-core
 *dev-java/tomcat-catalina
+*dev-libs/check
 *dev-libs/efl
 *dev-libs/weston
 #*dev-util/android-studio-bin
