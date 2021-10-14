@@ -9,6 +9,7 @@ dev-java/aqute-jpm-clnt
 dev-java/asm
 dev-java/bcpkix
 dev-java/bcprov
+dev-java/bcutil
 dev-java/beanvalidation-api
 dev-java/bnd-annotation
 dev-java/bndlib
