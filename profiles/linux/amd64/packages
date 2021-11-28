@@ -48,7 +48,6 @@
 *sys-devel/make
 *sys-devel/patch
 *sys-fs/e2fsprogs
-*sys-fs/eudev
 *sys-process/cronie
 *sys-process/htop
 *sys-process/iotop
