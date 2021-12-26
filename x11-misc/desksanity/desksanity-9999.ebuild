@@ -4,6 +4,7 @@
 EAPI="6"
 
 E_BUILD="meson"
+E_NO_COMMON="1"
 E_SNAP="${P}"
 E_TARBALL="tar.gz"
 E_TYPE="enlightenment/modules"
