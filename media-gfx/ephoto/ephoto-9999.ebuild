@@ -1,9 +1,10 @@
-# Copyright 2017 Obsidian-Studios, Inc.
+# Copyright 2017-2021 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-[[ ${PV} == 1.5* ]] && SRC_URI="http://www.smhouston.us/stuff/${P}.tar.gz"
+E_BUILD="meson"
+E_NO_COMMON="1"
 E_TYPE="apps"
 
 inherit e
