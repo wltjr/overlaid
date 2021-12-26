@@ -141,7 +141,7 @@ elif [[ "${PN}" != "efl" ]]; then
 fi
 DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}"
-if [[ ! ${E_PYTHON} ]]; then
+if [[ ! ${E_NO_COMMON} ]] && [[ ! ${E_PYTHON} ]]; then
 	DEPEND+=" doc? ( app-doc/doxygen )"
 	RDEPEND+=" nls? ( sys-devel/gettext )"
 	IUSE="debug doc nls static-libs"
