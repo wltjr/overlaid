@@ -7,3 +7,4 @@ sys-apps/sandbox abi_x86_32
 sys-auth/pambase passwdqc
 sys-devel/gcc openmp pie
 sys-libs/glibc -multiarch
+virtual/libcrypt static-libs
