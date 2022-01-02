@@ -105,6 +105,7 @@ net-print/hplip snmp
 net-vpn/tinc upnp
 net-wireless/bluez deprecated mesh midi obex
 sys-apps/busybox mdev sep-usr static
+sys-apps/fwupd uefi flashrom spi lzma
 sys-apps/pciutils -zlib
 sys-apps/util-linux ncurses static-libs
 sys-auth/polkit -gtk
