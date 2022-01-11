@@ -7,6 +7,7 @@
 *app-admin/sudo
 *app-admin/syslog-ng
 *app-admin/sysstat
+*app-editors/vscode
 *app-arch/android-simg2img
 *app-arch/android-unpackbootimg
 *app-arch/cabextract
