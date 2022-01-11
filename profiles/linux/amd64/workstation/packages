@@ -21,6 +21,7 @@
 *app-benchmarks/iozone
 *app-cdr/xfburn
 *app-cdr/uif2iso
+*app-containers/docker
 *app-crypt/gnupg
 *app-crypt/gpgme
 *app-crypt/seahorse
@@ -29,7 +30,6 @@
 *app-editors/hexedit
 *app-editors/leafpad
 *app-editors/nano
-*app-emulation/docker
 *app-emulation/mars-bin
 *app-emulation/virt-manager
 #*app-emulation/virtualbox
