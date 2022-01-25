@@ -1,5 +1,6 @@
 @laptop
 #@nvidia
+app-text/xournalpp
 sys-firmware/i915-ucode
 sys-firmware/intel-firmware
 sys-firmware/iwl8000-ucode
