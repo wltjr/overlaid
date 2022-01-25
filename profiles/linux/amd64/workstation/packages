@@ -151,6 +151,7 @@
 *media-video/mplayer
 *media-video/rage
 *media-video/ushare
+*media-video/vlc
 *net-analyzer/iftop
 *net-analyzer/mtr
 *net-analyzer/nmap
