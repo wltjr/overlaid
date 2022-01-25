@@ -178,7 +178,7 @@
 *net-misc/whois
 *net-print/cups
 *net-print/epson-inkjet-printer-escpr
-*net-print/hplip
+#*net-print/hplip
 *net-vpn/openfortivpn
 *net-wireless/wireless-tools
 *sci-misc/jflap
