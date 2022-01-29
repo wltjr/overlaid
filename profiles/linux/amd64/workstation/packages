@@ -52,7 +52,7 @@
 *app-shells/gentoo-bashcomp
 *app-text/dos2unix
 *app-text/enchant
-*app-text/etui
+#*app-text/etui
 *app-text/ghostscript-gpl
 *app-text/htmltidy
 *app-text/pdftk
@@ -189,6 +189,7 @@
 *sys-apps/ethtool
 *sys-apps/fbset
 *sys-apps/flashrom
+*sys-apps/fwupd
 *sys-apps/hdparm
 *sys-apps/hwinfo
 *sys-apps/iproute2
@@ -227,7 +228,8 @@
 *x11-misc/clipboard
 *x11-misc/desksanity
 *x11-misc/emprint
-*x11-misc/entrance
+#*x11-misc/entrance
+*x11-misc/lightdm-gtk-greeter
 *x11-misc/read-edid
 *x11-misc/synergy
 #*x11-misc/verne
