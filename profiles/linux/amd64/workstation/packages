@@ -149,6 +149,7 @@
 *media-tv/epymc
 *media-video/ffmpeg
 *media-video/mplayer
+*media-video/pipewire
 *media-video/rage
 *media-video/ushare
 *media-video/vlc
