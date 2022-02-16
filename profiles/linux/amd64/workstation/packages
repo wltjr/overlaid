@@ -52,7 +52,7 @@
 *app-shells/gentoo-bashcomp
 *app-text/dos2unix
 *app-text/enchant
-#*app-text/etui
+*app-text/etui
 *app-text/ghostscript-gpl
 *app-text/htmltidy
 *app-text/pdftk
