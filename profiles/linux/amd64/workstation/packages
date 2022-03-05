@@ -103,6 +103,7 @@
 *dev-libs/check
 *dev-libs/efl
 *dev-libs/weston
+*dev-texlive/texlive-mathscience
 #*dev-util/android-studio-bin
 *dev-util/android-tools
 *dev-util/ccache
