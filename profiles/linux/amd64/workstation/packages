@@ -109,7 +109,7 @@
 *dev-util/edi
 #*dev-util/eflete
 *dev-util/enventor
-*dev-util/netbeans
+#*dev-util/netbeans
 *dev-util/rockchip-upgrade-tool-bin
 *dev-util/shellcheck
 *dev-util/strace
