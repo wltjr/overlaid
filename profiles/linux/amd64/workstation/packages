@@ -33,6 +33,7 @@
 *app-emulation/mars-bin
 *app-emulation/qemu
 *app-emulation/virt-manager
+*app-emulation/virt-viewer
 #*app-emulation/virtualbox
 #*app-emulation/virtualbox-additions
 *app-misc/equate
