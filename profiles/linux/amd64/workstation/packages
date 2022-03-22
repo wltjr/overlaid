@@ -47,6 +47,7 @@
 *app-portage/mask-gentoo-efl-pkgs
 *app-portage/package-env-debug
 *app-portage/package-env-no-bin
+*app-portage/pfl
 *app-portage/portage-utils
 *app-portage/repoman
 *app-shells/bash-completion
