@@ -120,7 +120,7 @@ if [[ "${E_BUILD}" == "cmake" ]]; then
 elif [[ "${E_BUILD}" == "meson" ]]; then
 	inherit meson
 elif [[ ${E_PYTHON} ]]; then
-	PYTHON_COMPAT=( python3_{8,9} )
+	PYTHON_COMPAT=( python3_{8,9,10} )
 	inherit distutils-r1
 elif [[ ${E_PV} == *9999* ]] || [[ ${E_SNAP} ]]; then
 	WANT_AUTOCONF=latest
