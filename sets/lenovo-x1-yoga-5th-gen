@@ -1,0 +1,12 @@
+@laptop
+app-text/xournalpp
+gnome-extra/evolution-ews
+sys-auth/libfprint
+sys-firmware/i915-ucode
+sys-firmware/intel-firmware
+sys-firmware/iwl8000-ucode
+x11-drivers/xf86-input-wacom
+x11-drivers/xf86-video-intel
+x11-misc/barrier
+x11-misc/convertible
+x11-misc/matchbox-keyboard
