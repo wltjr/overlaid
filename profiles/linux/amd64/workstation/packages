@@ -116,7 +116,6 @@
 #*dev-util/eflete
 *dev-util/enventor
 #*dev-util/netbeans
-*dev-util/rockchip-upgrade-tool-bin
 *dev-util/shellcheck
 *dev-util/strace
 *dev-util/valgrind
