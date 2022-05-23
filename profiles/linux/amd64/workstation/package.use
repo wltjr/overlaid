@@ -21,7 +21,6 @@ dev-haskell/quickcheck template_haskell
 dev-java/antlr cxx java
 dev-java/commons-fileupload doc
 dev-java/edtftpj doc
-dev-java/ha-jdbc doc
 dev-java/itext doc
 dev-java/jazzy doc
 dev-java/javamail doc
