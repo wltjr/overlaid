@@ -1,7 +1,7 @@
-# Copyright 2016-2018 Obsidian-Studios, Inc.
+# Copyright 2016-2022 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 DIST_AUTHOR="MLEHMANN"
 DIST_VERSION="${PV}"
