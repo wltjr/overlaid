@@ -1,7 +1,7 @@
-# Copyright 2016-2018 Obsidian-Studios, Inc.
+# Copyright 2016-2022 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 BASE_URI="https://github.com/Obsidian-StudiosInc/${PN}"
 
@@ -15,7 +15,7 @@ fi
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit cmake-utils ${ECLASS}
+inherit cmake ${ECLASS}
 
 DESCRIPTION="Anti-Spam Server Proxy Report"
 HOMEPAGE="https://www.o-sinc.com/#!/software/${PN}"
@@ -27,8 +27,8 @@ src_configure() {
 	local mytype="Release"
 	use debug && mytype="Debug"
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${EROOT}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"
 		-DCMAKE_BUILD_TYPE=${mytype}
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
