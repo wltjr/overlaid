@@ -116,7 +116,7 @@ fi
 
 if [[ "${E_BUILD}" == "cmake" ]]; then
 	: ${CMAKE_MAKEFILE_GENERATOR:="ninja"}
-	inherit cmake-utils
+	inherit cmake
 elif [[ "${E_BUILD}" == "meson" ]]; then
 	inherit meson
 elif [[ ${E_PYTHON} ]]; then
@@ -162,6 +162,8 @@ e_src_prepare() {
 			eautoreconf
 		fi
 		elibtoolize
+	elif [[ "${E_BUILD}" == "cmake" ]]; then
+		cmake_src_prepare
 	fi
 }
 
@@ -184,7 +186,7 @@ e_src_configure() {
 			-DCMAKE_BUILD_TYPE=${mytype}
 			${E_ECONF[@]}
 		)
-		cmake-utils_src_configure
+		cmake_src_configure
 	elif [[ "${E_BUILD}" == "meson" ]]; then
 		local emesonargs
 		emesonargs=( ${E_ECONF[@]} )
@@ -219,7 +221,7 @@ e_src_compile() {
 	xdg_environment_reset
 
 	if [[ "${E_BUILD}" == "cmake" ]]; then
-		cmake-utils_src_compile
+		cmake_src_compile
 	elif [[ "${E_BUILD}" == "meson" ]]; then
 		meson_src_compile
 	elif [[ ${E_PYTHON} ]]; then
@@ -236,7 +238,7 @@ e_src_compile() {
 e_src_install() {
 	debug-print-function ${FUNCNAME} $*
 	if [[ "${E_BUILD}" == "cmake" ]]; then
-		cmake-utils_src_install
+		cmake_src_install
 	elif [[ "${E_BUILD}" == "meson" ]]; then
 		meson_src_install
 	elif [[ ${E_PYTHON} ]]; then
