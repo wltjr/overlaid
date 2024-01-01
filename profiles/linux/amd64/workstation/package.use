@@ -11,7 +11,6 @@ app-emulation/qemu -fdt -filecaps -pin-upstream-blobs
 app-emulation/virt-manager -spice
 app-office/gnucash -doc
 app-office/libreoffice gtk -mariadb
-app-office/openoffice-bin java
 app-text/asciidoc python_single_target_python2_7
 app-text/poppler cxx
 app-text/xmlto text
@@ -32,7 +31,6 @@ dev-libs/libxml2 icu python
 dev-libs/libpcre pcre16
 dev-libs/libpcre2 pcre16
 dev-libs/popt static-libs
-dev-libs/protobuf java
 dev-libs/pwlib ldap
 dev-libs/weston wayland-compositor xwayland
 dev-libs/xmlsec gcrypt nss
