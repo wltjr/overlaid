@@ -18,20 +18,6 @@ app-text/xmlto text
 dev-db/firebird server
 dev-db/sqlite secure-delete unlock-notify
 dev-haskell/quickcheck template_haskell
-dev-java/antlr cxx java
-dev-java/commons-fileupload doc
-dev-java/edtftpj doc
-dev-java/itext doc
-dev-java/jazzy doc
-dev-java/javamail doc
-dev-java/jdbc-jaybird doc
-dev-java/jdom doc
-dev-java/jexcelapi doc
-dev-java/junit source
-dev-java/openjfx-bin gtk2 gtk3
-dev-java/oracle-jdk-bin gtk2 gtk3 javafx nsplugin
-dev-java/protobuf-java nano
-dev-java/swing-layout source
 dev-lang/python ncurses tk
 dev-libs/DirectFB -egl nvidia video_cards_i965 video_cards_intel video_cards_nvidia video_cards_radeon
 dev-libs/boost icu python
