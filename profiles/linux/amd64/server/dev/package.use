@@ -2,8 +2,6 @@ app-arch/bzip2 static-libs
 app-crypt/heimdal -ssl -threads
 app-emulation/libvirt libvirtd numa python qemu -udev
 app-emulation/qemu fdt -filecaps -pin-upstream-blobs
-dev-java/antlr cxx java
-dev-java/openjdk-bin -fontconfig headless-awt
 dev-lang/python ncurses
 dev-libs/libpcre2 cxx pcre16
 media-gfx/imagemagick xml
