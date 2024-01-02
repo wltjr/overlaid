@@ -45,7 +45,6 @@
 *app-portage/package-env-no-bin
 *app-portage/pfl
 *app-portage/portage-utils
-*app-portage/repoman
 *app-shells/bash-completion
 *app-shells/gentoo-bashcomp
 *app-text/dos2unix
