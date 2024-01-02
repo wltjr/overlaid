@@ -2,13 +2,13 @@
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories xmlns="" version="1.0">
     <repo quality="experimental" status="unofficial">
-        <name>os-xtoo</name>
-        <description>Obsidian-Studios, Inc. Overlay</description>
-        <homepage>https://github.com/Obsidian-StudiosInc/os-xtoo/</homepage>
+        <name>overlaid</name>
+        <description>wltjr's personal Gentoo overlay</description>
+        <homepage>https://github.com/wltjr/overlaid</homepage>
         <owner>	
-            <email>wlt-ml@o-sinc.com</email>
+            <email>w@wltjr.com</email>
             <name>William L. Thomson Jr.</name>
         </owner>
-        <source type="git">https://github.com/Obsidian-StudiosInc/os-xtoo.git</source>
+        <source type="git">https://github.com/wltjr/overlaid</source>
     </repo>
 </repositories>
