@@ -44,7 +44,5 @@
 *sys-kernel/gentoo-sources
 *sys-power/cpupower
 *sys-process/at
-*www-apache/mod_jk
 *www-servers/apache
-*www-servers/tomcat
 
