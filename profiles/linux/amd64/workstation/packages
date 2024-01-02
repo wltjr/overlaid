@@ -1,7 +1,6 @@
 *app-admin/ansible
 *app-admin/eselect
 *app-admin/hddtemp
-#*app-admin/linode-cli
 *app-admin/logrotate
 *app-admin/makepasswd
 *app-admin/sudo
@@ -9,11 +8,8 @@
 *app-admin/sysstat
 *app-editors/gummi
 *app-editors/vscode
-*app-arch/android-simg2img
-*app-arch/android-unpackbootimg
 *app-arch/cabextract
 *app-arch/dpkg
-*app-arch/epack
 *app-arch/rar
 *app-arch/rpm
 *app-arch/rpm2targz
@@ -30,7 +26,6 @@
 *app-editors/hexedit
 *app-editors/leafpad
 *app-editors/nano
-*app-emulation/mars-bin
 *app-emulation/qemu
 *app-emulation/virt-manager
 *app-emulation/virt-viewer
@@ -55,7 +50,6 @@
 *app-shells/gentoo-bashcomp
 *app-text/dos2unix
 *app-text/enchant
-*app-text/etui
 *app-text/ghostscript-gpl
 *app-text/htmltidy
 *app-text/pdftk
@@ -71,10 +65,6 @@
 *dev-util/android-tools
 *dev-util/ccache
 *dev-util/debugedit
-*dev-util/edi
-#*dev-util/eflete
-*dev-util/enventor
-#*dev-util/netbeans
 *dev-util/shellcheck
 *dev-util/strace
 *dev-util/valgrind
@@ -111,7 +101,6 @@
 *media-sound/mp3splt
 *media-sound/pulseaudio
 *media-sound/sox
-*media-tv/epymc
 *media-video/ffmpeg
 *media-video/mplayer
 *media-video/pipewire
@@ -149,7 +138,6 @@
 #*net-print/hplip
 *net-vpn/openfortivpn
 *net-wireless/wireless-tools
-*sci-misc/jflap
 *sys-apps/dmidecode
 *sys-apps/dstat
 *sys-apps/ethtool
