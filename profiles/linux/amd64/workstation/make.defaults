@@ -53,8 +53,6 @@ xkbswitch xwayland"
 
 INPUT_DEVICES="-evdev -keyboard libinput synaptics wacom"
 
-#JAVA_PKG_DEBUG="true"
-
 LCD_DEVICES=""
 
 LIBREOFFICE_EXTENSIONS=""
