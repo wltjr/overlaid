@@ -6,8 +6,6 @@
 *app-portage/esearch
 *app-portage/mask-gentoo-dev-java
 *app-portage/package-env-no-bin
-*dev-db/firebird
-*dev-db/odbcfb
 *dev-perl/mime-construct
 *dev-util/strace
 *dev-vcs/git
