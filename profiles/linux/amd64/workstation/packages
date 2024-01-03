@@ -166,7 +166,6 @@
 *x11-misc/desksanity
 *x11-misc/emprint
 #*x11-misc/entrance
-*x11-misc/lightdm-gtk-greeter
 *x11-misc/read-edid
 *x11-misc/synergy
 #*x11-misc/verne
