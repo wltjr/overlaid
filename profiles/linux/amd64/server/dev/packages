@@ -31,7 +31,6 @@
 *sys-apps/smartmontools
 *sys-apps/usbutils
 *sys-boot/syslinux
-*sys-devel/distcc
 *sys-fs/extundelete
 *sys-fs/lvm2
 *sys-fs/mdadm
