@@ -18,10 +18,6 @@
 *net-fs/samba
 *net-ftp/tftp-hpa
 *net-irc/irssi
-*net-misc/asterisk
-*net-misc/asterisk-core-sounds
-*net-misc/asterisk-extra-sounds
-*net-misc/asterisk-moh-opsound
 *net-misc/bridge-utils
 *net-misc/ifenslave
 *net-misc/iperf
