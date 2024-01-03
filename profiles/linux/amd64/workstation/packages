@@ -52,8 +52,6 @@
 *app-text/ghostscript-gpl
 *app-text/htmltidy
 *app-text/pdftk
-*dev-db/flamerobin
-*dev-db/odbcfb
 *dev-libs/check
 *dev-libs/efl
 *dev-libs/weston
