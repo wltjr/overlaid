@@ -36,7 +36,6 @@
 *app-misc/screen
 *app-office/gnucash
 *app-portage/mask-gentoo-dev-java
-*app-portage/mask-gentoo-efl-pkgs
 *app-portage/package-env-debug
 *app-portage/package-env-no-bin
 *app-portage/pfl
