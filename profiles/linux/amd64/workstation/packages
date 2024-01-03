@@ -45,7 +45,6 @@
 *app-text/dos2unix
 *app-text/enchant
 *app-text/ghostscript-gpl
-*app-text/htmltidy
 *dev-libs/check
 *dev-libs/efl
 *dev-libs/weston
