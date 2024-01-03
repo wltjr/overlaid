@@ -153,7 +153,6 @@
 *sys-apps/pciutils
 *sys-apps/pmount
 *sys-apps/pv
-*sys-apps/rkflashtool
 *sys-apps/setserial
 *sys-apps/smartmontools
 *sys-apps/usbutils
