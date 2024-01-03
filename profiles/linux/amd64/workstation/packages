@@ -35,7 +35,6 @@
 *app-misc/figlet
 *app-misc/screen
 *app-office/gnucash
-*app-office/libreoffice
 *app-portage/mask-gentoo-dev-java
 *app-portage/mask-gentoo-efl-pkgs
 *app-portage/package-env-debug
