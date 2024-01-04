@@ -121,6 +121,7 @@
 *net-misc/telnet-bsd
 *net-misc/whois
 *net-print/cups
+*net-print/cups-filters
 *net-print/epson-inkjet-printer-escpr
 #*net-print/hplip
 *net-vpn/openfortivpn
