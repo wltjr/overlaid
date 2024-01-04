@@ -63,6 +63,6 @@ OFFICE_IMPLEMENTATION="openoffice"
 
 SANE_BACKENDS="epson"
 
-VIDEO_CARDS="i915 intel radeon"
+VIDEO_CARDS="i915 i965 intel"
 
 MAKEOPTS="-j3"
