@@ -29,8 +29,6 @@
 *app-emulation/qemu
 *app-emulation/virt-manager
 *app-emulation/virt-viewer
-#*app-emulation/virtualbox
-#*app-emulation/virtualbox-additions
 *app-misc/equate
 *app-misc/figlet
 *app-misc/screen
@@ -63,21 +61,12 @@
 *dev-vcs/git-filter-repo
 *dev-vcs/mercurial
 *dev-vcs/rcs
-#*gnome-base/libgnome-keyring
 *gnome-extra/nm-applet
 *kde-frameworks/oxygen-icons
 *mail-mta/ssmtp
 *media-fonts/corefonts
 *media-fonts/dejavu
-#*media-fonts/font-adobe-100dpi
-#*media-fonts/font-adobe-75dpi
-#*media-fonts/font-adobe-utopia-100dpi
-#*media-fonts/font-adobe-utopia-75dpi
-#*media-fonts/font-adobe-utopia-type1
-#*media-fonts/freefont
-#*media-fonts/freefonts
 *media-fonts/noto
-#*media-fonts/terminus-font
 *media-gfx/ephoto
 *media-gfx/gimp
 *media-gfx/graphviz
@@ -123,7 +112,6 @@
 *net-print/cups
 *net-print/cups-filters
 *net-print/epson-inkjet-printer-escpr
-#*net-print/hplip
 *net-vpn/openfortivpn
 *net-wireless/wireless-tools
 *sys-apps/dmidecode
@@ -172,7 +160,6 @@
 *x11-misc/entrance
 *x11-misc/read-edid
 *x11-misc/synergy
-#*x11-misc/verne
 *x11-misc/xclip
 *x11-misc/xdgurl
 *x11-terms/terminology
