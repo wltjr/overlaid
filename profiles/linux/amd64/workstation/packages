@@ -60,6 +60,7 @@
 *dev-util/valgrind
 *dev-vcs/cvs
 *dev-vcs/git
+*dev-vcs/git-filter-repo
 *dev-vcs/mercurial
 *dev-vcs/rcs
 #*gnome-base/libgnome-keyring
