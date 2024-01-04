@@ -14,7 +14,7 @@ USE="X aalib acpi alsa -apache2 bzip2 \
      pdf mp3 xv graphviz fontconfig -smartcard lcms \
      javascript libnotify sound wavpack regex \
      threads -tk -debug -ldap -acl -kerberos pnm gpg git \
-     -gconf amr aspell pulseaudio openh264 \
+     -gconf -gtk-doc -doc amr aspell pulseaudio openh264 \
      id3tag xcb md5sum ssh v4l2 v4l network -mysql -joystick \
      elogind libffi -ncurses video extras syslog policykit \
      glib ofx -gphoto2 -ruby xine -python \
