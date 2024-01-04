@@ -19,7 +19,7 @@ USE="X aalib acpi alsa -apache2 bzip2 \
      elogind libffi -ncurses video extras syslog policykit \
      glib ofx -gphoto2 -ruby xine -python \
      -cddb -cdparanoia webkit xinerama -dhcpcd inotify \
-     -kde mng lame -gnome -eds faac vpx vaapi \
+     -kde mng lame -gnome -eds faac vpx \
      -gnome-keyring -snmp -berkdb -gimp -iconv \
      openexr -gstreamer -avahi -server dts \
      -xscreensaver -cxx -glade equalizer realtime twolame -lvm1 \
