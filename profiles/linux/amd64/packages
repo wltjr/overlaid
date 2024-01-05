@@ -1,5 +1,6 @@
 *app-admin/logrotate
 *app-admin/syslog-ng
+*app-admin/sysstat
 *app-arch/bzip2
 *app-arch/gzip
 *app-arch/tar
