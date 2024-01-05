@@ -92,7 +92,7 @@ JAVA_PKG_STRICT="true"
 
 KERNEL="linux"
 
-L10N="en en_US"
+L10N="en en_US en-US"
 LINGUAS="${L10N}"	# legacy
 LC_MESSAGES="C"
 
