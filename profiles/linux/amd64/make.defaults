@@ -10,7 +10,7 @@ ARCH="amd64"
 ACCEPT_KEYWORDS="${ARCH}"
 
 CHOST="x86_64-pc-linux-gnu"
-CFLAGS="-O2 -pipe -march=amdfam10 -mcx16 -msahf -mabm -mlzcnt"
+CFLAGS="-O2 -pipe -march=skylake"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
