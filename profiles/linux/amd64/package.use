@@ -1,5 +1,6 @@
 app-editors/nano ncurses nls spell unicode
 dev-libs/libgpg-error nls static-libs
+dev-libs/libpcre2 static-libs
 dev-libs/libxml2 icu python
 dev-libs/openssl -sslv3
 net-misc/ntp openntpd
