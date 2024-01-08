@@ -25,7 +25,6 @@ dev-libs/gmp cxx
 dev-libs/libcdio cddb
 dev-libs/libdbusmenu gtk gtk3
 dev-libs/libgcrypt static-libs
-dev-libs/libgpg-error static-libs
 dev-libs/libindicate gtk
 dev-libs/libxml2 icu python
 dev-libs/libpcre pcre16
