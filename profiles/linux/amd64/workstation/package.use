@@ -13,6 +13,7 @@ app-office/gnucash -doc
 app-office/libreoffice gtk -mariadb
 app-text/poppler cxx
 app-text/xmlto text
+app-text/xournalpp lua_single_target_lua5-4
 dev-db/firebird server
 dev-db/sqlite secure-delete unlock-notify
 dev-haskell/quickcheck template_haskell
