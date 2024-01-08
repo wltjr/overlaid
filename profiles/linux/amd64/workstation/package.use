@@ -26,7 +26,6 @@ dev-libs/libcdio cddb
 dev-libs/libdbusmenu gtk gtk3
 dev-libs/libgcrypt static-libs
 dev-libs/libindicate gtk
-dev-libs/libxml2 icu python
 dev-libs/libpcre pcre16
 dev-libs/libpcre2 pcre16
 dev-libs/popt static-libs
