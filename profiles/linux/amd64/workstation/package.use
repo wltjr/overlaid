@@ -61,7 +61,7 @@ media-libs/lcms python static-libs
 media-libs/libmng static-libs
 media-libs/libpng apng static-libs
 media-libs/libsdl joystick
-media-libs/mesa classic g3dvl gbm gles2 -libglvnd static static-libs vdpau video_cards_i965 video_cards_intel video_cards_nvidia video_cards_radeon wayland
+media-libs/mesa video_cards_i965 video_cards_intel -video_cards_nvidia video_cards_radeon wayland
 media-libs/libvpx postproc svc
 media-libs/portaudio cxx
 media-libs/xine-lib gtk
