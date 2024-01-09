@@ -1,4 +1,5 @@
 app-admin/syslog-ng
 app-misc/ca-certificates
+app-portage/mask-gentoo-dev-java
 dev-libs/ivykis
 net-misc/openssh
