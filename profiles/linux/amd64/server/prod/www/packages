@@ -26,8 +26,6 @@
 *dev-java/jtsys
 *dev-java/openpdf
 *dev-java/recaptcha4j
-#*dev-java/scribejava-apis
-#*dev-java/scribejava-core
 *www-apache/mod_jk
 *www-servers/apache
 *www-servers/tomcat:9
