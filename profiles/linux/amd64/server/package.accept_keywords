@@ -1,3 +1,4 @@
 app-admin/syslog-ng
+app-misc/ca-certificates
 dev-libs/ivykis
 net-misc/openssh
