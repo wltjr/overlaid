@@ -1,5 +1,6 @@
 *app-portage/mask-gentoo-dev-java
 *app-portage/package-env-no-bin
+*dev-db/firebird
 *dev-java/commonmark-parent
 *dev-java/commons-collections:0
 *dev-java/commons-dbcp
