@@ -18,6 +18,7 @@
 *app-cdr/xfburn
 *app-cdr/uif2iso
 *app-containers/docker
+*app-containers/docker-cli
 *app-crypt/gnupg
 *app-crypt/gpgme
 *app-crypt/seahorse
