@@ -1,5 +1,6 @@
 *app-admin/ansible
 *app-benchmarks/iozone
+*app-containers/docker
 *app-crypt/certbot
 *app-emulation/libvirt
 *app-forensics/chkrootkit
