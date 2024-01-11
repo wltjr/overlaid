@@ -1,6 +1,5 @@
 @laptop
 app-text/xournalpp
-gnome-extra/evolution-ews
 sys-auth/libfprint
 sys-firmware/i915-ucode
 sys-firmware/intel-firmware
