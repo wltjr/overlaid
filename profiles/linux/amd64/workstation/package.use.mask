@@ -1,4 +1,3 @@
-app-doc/doxygen sqlite
 dev-libs/glib fam
 media-sound/audacity ffmpeg
 x11-libs/cairo directfb gles2
