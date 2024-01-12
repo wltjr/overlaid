@@ -40,7 +40,6 @@ dev-vcs/git cvs gtk python subversion
 dev-vcs/subversion -dso -java -kde -kwallet perl
 gnome-extra/evolution-data-server gtk oauth
 gnome-extra/nm-applet appindicator -modemmanager
-mail-client/claws-mail archive calendar -libcanberra networkmanager ntp session startup-notification
 media-fonts/dejavu -fontforge -X
 media-gfx/exiv2 xmp
 media-gfx/gimp smp
