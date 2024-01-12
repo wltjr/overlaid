@@ -22,7 +22,6 @@
 *app-crypt/gnupg
 *app-crypt/gpgme
 *app-crypt/seahorse
-*app-doc/doxygen
 *app-editors/ecrire
 *app-editors/hexedit
 *app-editors/leafpad
@@ -43,6 +42,7 @@
 *app-shells/bash-completion
 *app-shells/gentoo-bashcomp
 *app-text/dos2unix
+*app-text/doxygen
 *app-text/enchant
 *app-text/ghostscript-gpl
 *app-text/tree
