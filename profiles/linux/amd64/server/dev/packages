@@ -8,8 +8,8 @@
 *app-portage/esearch
 *app-portage/mask-gentoo-dev-java
 *app-portage/package-env-no-bin
+*dev-debug/strace
 *dev-perl/mime-construct
-*dev-util/strace
 *dev-vcs/git
 *mail-mta/ssmtp
 *media-gfx/imagemagick
