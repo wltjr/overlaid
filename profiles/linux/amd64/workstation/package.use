@@ -16,6 +16,7 @@ app-text/xmlto text
 app-text/xournalpp lua_single_target_lua5-4
 dev-db/firebird server
 dev-db/sqlite secure-delete unlock-notify
+dev-debug/gdb python
 dev-haskell/quickcheck template_haskell
 dev-lang/python ncurses tk
 dev-libs/DirectFB -egl nvidia video_cards_i965 video_cards_intel video_cards_nvidia video_cards_radeon
@@ -91,7 +92,6 @@ sys-apps/pciutils -zlib
 sys-apps/util-linux ncurses static-libs
 sys-auth/polkit -gtk
 sys-devel/gcc cxx hardened openmp -pch sanitize
-sys-devel/gdb python
 sys-fs/lvm2 -udev
 sys-libs/gdbm berkdb
 sys-libs/glibc -clone3 debug -multiarch
