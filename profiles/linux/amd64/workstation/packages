@@ -46,6 +46,7 @@
 *app-text/enchant
 *app-text/ghostscript-gpl
 *app-text/tree
+*dev-debug/gdb
 *dev-libs/check
 *dev-libs/efl
 *dev-libs/weston
@@ -137,7 +138,6 @@
 *sys-apps/vbetool
 *sys-block/ms-sys
 *sys-boot/syslinux
-*sys-devel/gdb
 *sys-fs/dosfstools
 *sys-fs/extundelete
 *sys-fs/lvm2
