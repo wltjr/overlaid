@@ -48,6 +48,7 @@
 *app-text/tree
 *dev-debug/gdb
 *dev-debug/strace
+*dev-debug/valgrind
 *dev-libs/check
 *dev-libs/efl
 *dev-libs/weston
@@ -57,7 +58,6 @@
 *dev-util/ccache
 *dev-util/debugedit
 *dev-util/shellcheck
-*dev-util/valgrind
 *dev-vcs/cvs
 *dev-vcs/git
 *dev-vcs/git-filter-repo
