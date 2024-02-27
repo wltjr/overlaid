@@ -46,7 +46,6 @@
 *sys-devel/binutils
 *sys-devel/gcc
 *sys-devel/gnuconfig
-*sys-devel/make
 *sys-fs/e2fsprogs
 *sys-process/cronie
 *sys-process/htop
