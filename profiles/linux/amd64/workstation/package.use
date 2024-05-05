@@ -42,6 +42,7 @@ dev-vcs/subversion -dso -java -kde -kwallet perl
 gnome-extra/evolution-data-server gtk oauth
 gnome-extra/nm-applet appindicator -modemmanager
 media-fonts/dejavu -fontforge -X
+media-gfx/blender bullet collada
 media-gfx/exiv2 xmp
 media-gfx/gimp smp
 media-gfx/imagemagick autotrace cxx pango
