@@ -8,6 +8,7 @@ sys-apps/busybox -pam static
 sys-apps/grep static
 sys-apps/sandbox abi_x86_32
 sys-auth/pambase passwdqc
+sys-cluster/openmpi valgrind
 sys-devel/gcc openmp pie
 sys-libs/glibc -multiarch
 virtual/libcrypt static-libs
