@@ -153,6 +153,7 @@
 *sys-process/htop
 *sys-process/iotop
 *sys-process/lsof
+*virtual/mpi
 *www-client/firefox
 *x11-apps/xdm
 *x11-apps/mesa-progs
