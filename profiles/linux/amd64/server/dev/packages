@@ -39,5 +39,6 @@
 *sys-kernel/gentoo-sources
 *sys-power/cpupower
 *sys-process/at
+*virtual/mpi
 *www-servers/apache
 
