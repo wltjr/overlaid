@@ -52,6 +52,7 @@
 *dev-libs/check
 *dev-libs/efl
 *dev-libs/weston
+*dev-tex/biblatex
 *dev-texlive/texlive-mathscience
 *dev-texlive/texlive-plaingeneric
 *dev-texlive/texlive-pstricks
