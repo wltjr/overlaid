@@ -53,6 +53,7 @@
 *dev-libs/efl
 *dev-libs/weston
 *dev-tex/biblatex
+*dev-tex/latex-beamer
 *dev-texlive/texlive-mathscience
 *dev-texlive/texlive-plaingeneric
 *dev-texlive/texlive-pstricks
