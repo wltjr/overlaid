@@ -104,7 +104,7 @@ PORTDIR=/usr/portage
 PKGDIR=${PORTDIR}/packages/amd64
 
 PYTHON_TARGETS="-python2_7 -python3_8 -python3_9 -python3_10 python3_11 python3_12 -python3_13"
-PYTHON_SINGLE_TARGET="-python3_5 -python3_6 -python3_8 -python3_9 python3_10"
+PYTHON_SINGLE_TARGET="-python3_10 -python3_11 python3_12"
 
 QEMU_SOFTMMU_TARGETS="i386 x86_64"
 QEMU_USER_TARGETS="i386 x86_64"
