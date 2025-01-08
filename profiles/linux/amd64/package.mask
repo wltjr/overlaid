@@ -1,5 +1,6 @@
 =dev-db/firebird-4*
 dev-lang/rust
 dev-lang/rust-bin
+llvm-core/llvm
 sys-kernel/gentoo-sources
 =virtual/libcrypt-2
