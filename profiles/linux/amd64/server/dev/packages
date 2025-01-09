@@ -6,7 +6,6 @@
 *app-emulation/libvirt
 *app-forensics/chkrootkit
 *app-portage/esearch
-*app-portage/mask-gentoo-dev-java
 *app-portage/package-env-no-bin
 *dev-debug/strace
 *dev-perl/mime-construct
