@@ -8,6 +8,7 @@
 *app-editors/nano
 *app-misc/screen
 *app-portage/gentoolkit
+*app-portage/mask-gentoo-dev-java
 *app-shells/bash:0
 *app-shells/bash-completion
 *net-analyzer/iftop
