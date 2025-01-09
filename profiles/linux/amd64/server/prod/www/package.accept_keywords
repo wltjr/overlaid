@@ -1,5 +1,4 @@
 app-eselect/eselect-java
-app-portage/mask-gentoo-dev-java
 app-portage/package-env-no-bin
 dev-java/animal-sniffer-annotations
 dev-java/avalon-logkit
