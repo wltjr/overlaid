@@ -87,6 +87,7 @@
 *media-sound/pulseaudio
 *media-sound/sox
 *media-video/ffmpeg
+*media-video/guvcview
 *media-video/mplayer
 *media-video/pipewire
 *media-video/rage
