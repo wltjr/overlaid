@@ -7,7 +7,7 @@ app-crypt/libsecret vala
 app-crypt/pinentry efl gnome3 gnome-keyring ncurses
 app-emulation/libvirt libssh libvirtd python qemu -virt-network
 app-emulation/libvirt-glib python
-app-emulation/qemu -fdt -filecaps -pin-upstream-blobs
+app-emulation/qemu fdt -filecaps gtk -pin-upstream-blobs -spice
 app-emulation/virt-manager -spice
 app-office/gnucash -doc
 app-office/libreoffice gtk -mariadb
