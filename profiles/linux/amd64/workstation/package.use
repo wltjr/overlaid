@@ -31,6 +31,7 @@ dev-libs/libindicate gtk
 dev-libs/libpcre pcre16
 dev-libs/libpcre2 pcre16
 dev-libs/popt static-libs
+dev-libs/protobuf libupb
 dev-libs/pwlib ldap
 dev-libs/weston wayland-compositor xwayland
 dev-libs/xmlsec gcrypt nss
