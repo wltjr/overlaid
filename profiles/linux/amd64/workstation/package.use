@@ -36,6 +36,7 @@ dev-libs/pwlib ldap
 dev-libs/weston wayland-compositor xwayland
 dev-libs/xmlsec gcrypt nss
 dev-qt/qtcore icu
+dev-qt/qtmultimedia qml
 dev-scheme/guile deprecated
 dev-util/android-studio-bin system-jvm
 dev-vcs/cvs -server
