@@ -77,7 +77,7 @@ media-sound/gmusicbrowser mplayer
 media-sound/pulseaudio gnome
 media-video/libav theora
 media-video/ffmpeg codec2 ebur128 encode libaom libaribb24 opus snappy theora zvbi
-media-video/mplayer iconv -pnm
+media-video/mplayer -aalib iconv -pnm
 net-analyzer/mtr gtk
 net-analyzer/wireshark gtk
 net-dns/dnsmasq script
