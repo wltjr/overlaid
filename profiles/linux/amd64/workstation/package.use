@@ -53,6 +53,7 @@ media-gfx/sane-backends -v4l
 media-libs/babl introspection
 media-libs/flac cxx
 media-libs/freetype brotli harfbuzz static-libs
+media-libs/gegl introspection
 media-libs/gst-plugins-base gles2 theora
 media-libs/gst-plugins-bad gles2
 media-libs/harfbuzz icu
