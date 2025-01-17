@@ -76,7 +76,7 @@ media-sound/lightmediascanner -flac -jpeg id3 mp4 ogg -png
 media-sound/gmusicbrowser mplayer
 media-sound/pulseaudio gnome
 media-video/libav theora
-media-video/ffmpeg ebur128 encode opus theora
+media-video/ffmpeg codec2 ebur128 encode libaom libaribb24 opus snappy theora zvbi
 media-video/mplayer iconv -pnm
 net-analyzer/mtr gtk
 net-analyzer/wireshark gtk
