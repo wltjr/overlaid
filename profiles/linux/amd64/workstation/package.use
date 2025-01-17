@@ -71,6 +71,7 @@ media-libs/libvpx postproc svc
 media-libs/portaudio cxx
 media-libs/xine-lib gtk
 media-plugins/gst-plugins-meta opus
+media-sound/audacity -lv2
 media-sound/lightmediascanner -flac -jpeg id3 mp4 ogg -png
 media-sound/gmusicbrowser mplayer
 media-sound/pulseaudio gnome
