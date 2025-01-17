@@ -80,6 +80,7 @@ media-video/ffmpeg codec2 ebur128 encode libaom libaribb24 opus snappy theora zv
 media-video/mplayer -aalib iconv -pnm
 media-video/pipewire extra gstreamer pipewire-alsa sound-server
 media-video/wireplumber elogind lua_single_target_lua5-4
+media-video/vlc -gui
 net-analyzer/mtr gtk
 net-analyzer/wireshark gtk
 net-dns/dnsmasq script
