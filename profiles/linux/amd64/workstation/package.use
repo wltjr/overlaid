@@ -82,6 +82,7 @@ media-video/pipewire extra gstreamer pipewire-alsa sound-server
 media-video/wireplumber elogind lua_single_target_lua5-4
 media-video/vlc -gui
 net-analyzer/mtr gtk
+net-analyzer/nmap -symlink
 net-analyzer/wireshark gtk
 net-dns/dnsmasq script
 net-ftp/gftp gtk
