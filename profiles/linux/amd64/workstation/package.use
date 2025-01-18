@@ -97,6 +97,7 @@ net-nds/openldap berkdb -gnutls odbc -minimal
 net-print/hplip snmp
 net-vpn/tinc upnp
 net-wireless/bluez deprecated mesh midi obex
+sci-physics/bullet double-precision
 sys-apps/busybox mdev sep-usr static
 sys-apps/fwupd uefi flashrom spi lzma
 sys-apps/pciutils -zlib
