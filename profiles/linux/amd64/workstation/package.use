@@ -113,6 +113,7 @@ sys-libs/talloc python
 sys-libs/tdb python
 sys-libs/tevent python
 sys-libs/zlib minizip static-libs
+sys-process/procps ncurses
 virtual/ffmpeg theora
 virtual/jpeg static-libs
 www-client/chromium bindist gtk3 pic -system-icu -system-libvpx -tcmalloc
