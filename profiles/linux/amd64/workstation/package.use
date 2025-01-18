@@ -99,7 +99,7 @@ net-vpn/tinc upnp
 net-wireless/bluez deprecated mesh midi obex
 sci-physics/bullet double-precision
 sys-apps/busybox mdev sep-usr static
-sys-apps/fwupd uefi flashrom spi lzma
+sys-apps/fwupd uefi flashrom -seccomp spi lzma
 sys-apps/pciutils -zlib
 sys-apps/util-linux ncurses static-libs
 sys-auth/polkit -gtk
