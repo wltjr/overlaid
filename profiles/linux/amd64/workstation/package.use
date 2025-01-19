@@ -8,7 +8,6 @@ app-crypt/pinentry efl gnome3 gnome-keyring ncurses
 app-emulation/libvirt libssh libvirtd python qemu -virt-network
 app-emulation/libvirt-glib python
 app-emulation/qemu fdt -filecaps gtk -pin-upstream-blobs -spice
-app-emulation/virt-manager -spice
 app-emulation/virt-viewer -spice
 app-office/gnucash -doc guile_single_target_3-0
 app-office/libreoffice gtk -mariadb
