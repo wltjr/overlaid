@@ -38,7 +38,6 @@ dev-qt/qtmultimedia qml
 dev-scheme/guile deprecated
 dev-vcs/cvs -server
 dev-vcs/git cvs gtk python
-dev-vcs/subversion -dso -java -kde -kwallet perl
 gnome-extra/evolution-data-server gtk oauth
 gnome-extra/nm-applet appindicator -modemmanager
 media-fonts/dejavu -fontforge -X
