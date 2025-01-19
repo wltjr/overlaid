@@ -91,7 +91,6 @@ net-libs/webkit-gtk gstreamer opengl
 net-misc/networkmanager dhclient -dhcpcd -iwd modemmanager -nss -ppp
 net-misc/openssh -X
 net-nds/openldap berkdb -gnutls odbc -minimal
-net-print/hplip snmp
 net-vpn/tinc upnp
 net-wireless/bluez deprecated mesh midi obex
 sci-physics/bullet double-precision
