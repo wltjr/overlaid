@@ -14,6 +14,7 @@ sys-apps/sandbox abi_x86_32
 sys-auth/pambase passwdqc
 sys-cluster/openmpi valgrind
 sys-devel/gcc openmp pie
+sys-fs/lvm2 lvm -udev
 sys-libs/glibc -multiarch
 sys-libs/ncurses tinfo
 virtual/libcrypt static-libs
