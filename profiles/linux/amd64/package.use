@@ -15,4 +15,5 @@ sys-auth/pambase passwdqc
 sys-cluster/openmpi valgrind
 sys-devel/gcc openmp pie
 sys-libs/glibc -multiarch
+sys-libs/ncurses tinfo
 virtual/libcrypt static-libs
