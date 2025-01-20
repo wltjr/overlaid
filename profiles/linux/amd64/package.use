@@ -4,6 +4,7 @@ dev-libs/libgpg-error nls static-libs
 dev-libs/libpcre2 static-libs
 dev-libs/libxml2 icu python
 dev-libs/openssl -sslv3
+media-libs/libpng apng static-libs
 net-misc/ntp openntpd
 sys-apps/busybox -pam static
 sys-apps/grep static
