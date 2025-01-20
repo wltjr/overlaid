@@ -6,6 +6,7 @@ dev-libs/libxml2 icu python
 dev-libs/openssl -sslv3
 media-libs/libpng apng static-libs
 net-libs/gnutls pkcs11 tools
+net-misc/curl -gnutls
 net-misc/ntp openntpd
 sys-apps/busybox -pam static
 sys-apps/grep static
