@@ -13,7 +13,7 @@ sys-apps/grep static
 sys-apps/sandbox abi_x86_32
 sys-auth/pambase passwdqc
 sys-cluster/openmpi valgrind
-sys-devel/gcc openmp pie
+sys-devel/gcc hardened openmp -pch pie
 sys-fs/lvm2 lvm -udev
 sys-libs/glibc -multiarch
 sys-libs/ncurses tinfo
