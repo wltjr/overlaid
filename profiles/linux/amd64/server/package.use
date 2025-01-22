@@ -1,1 +1,2 @@
 dev-libs/glib -introspection -mime
+media-libs/harfbuzz -cairo -introspection
