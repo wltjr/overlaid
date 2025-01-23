@@ -5,7 +5,6 @@ CFLAGS="-march=x86-64 -mcx16 -msahf -mpopcnt -O2 -pipe"
 
 MAKEOPTS="-j2"
 
-USE="-fam -gnutls hardened -jit -ncurses nls -openmp -pch -pcre -python
--sanitize -spell syslog"
+USE="-gnutls -jit -openmp -pcre"
 
 PERL_FEATURES="ithreads"
