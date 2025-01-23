@@ -35,7 +35,6 @@
 *sys-fs/extundelete
 *sys-fs/lvm2
 *sys-fs/mdadm
-*sys-kernel/gentoo-sources
 *sys-power/cpupower
 *sys-process/at
 *virtual/mpi
