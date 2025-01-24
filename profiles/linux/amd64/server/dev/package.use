@@ -20,7 +20,7 @@ sys-apps/hwids udev
 sys-apps/pciutils -zlib
 sys-apps/portage python3
 sys-apps/util-linux ncurses static-libs udev
-sys-devel/gcc cxx openmp sanitize
+sys-devel/gcc sanitize
 sys-libs/gdbm berkdb
 sys-libs/glibc debug -multiarch
 sys-libs/ldb -ldap -python
