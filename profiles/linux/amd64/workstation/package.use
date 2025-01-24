@@ -14,7 +14,6 @@ app-text/poppler cxx qt6
 app-text/xmlto text
 app-text/xournalpp lua_single_target_lua5-4
 dev-db/firebird server
-dev-db/sqlite secure-delete unlock-notify
 dev-debug/gdb python
 dev-haskell/quickcheck template_haskell
 dev-lang/python ncurses tk
