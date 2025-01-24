@@ -97,7 +97,7 @@ sys-apps/fwupd uefi flashrom -seccomp spi lzma
 sys-apps/pciutils -zlib
 sys-apps/util-linux ncurses static-libs
 sys-auth/polkit -gtk
-sys-devel/gcc cxx hardened openmp -pch sanitize
+sys-devel/gcc sanitize
 sys-fs/lvm2 -udev
 sys-libs/gdbm berkdb
 sys-libs/glibc -clone3 debug -multiarch
