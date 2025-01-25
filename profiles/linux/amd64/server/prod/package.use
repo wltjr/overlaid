@@ -1,5 +1,4 @@
 dev-lang/perl berkdb
 dev-lang/python ncurses
-dev-lang/python-exec python_targets_python3_5
 dev-libs/libxml2 python
 #net-firewall/iptables conntrack netlink nftables
