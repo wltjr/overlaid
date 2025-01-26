@@ -1,5 +1,5 @@
 
-USE="gif gdbm jpeg jpeg2k -iconv -iptables lvm odbc -perl png tiff 
+USE="gif gdbm jpeg jpeg2k -iconv -iptables lvm odbc openmp -perl png tiff 
 truetype udev webp"
 
 ACCEPT_KEYWORDS="~amd64"
