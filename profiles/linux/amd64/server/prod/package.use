@@ -1,3 +1,4 @@
+dev-cpp/eigen openmp
 dev-lang/perl berkdb
 dev-lang/python ncurses
 dev-libs/libxml2 python
