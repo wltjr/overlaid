@@ -99,6 +99,7 @@ sys-apps/pciutils -zlib
 sys-apps/util-linux ncurses static-libs
 sys-auth/polkit -gtk
 sys-devel/gcc sanitize
+sys-devel/gettext -git
 sys-fs/lvm2 -udev
 sys-libs/gdbm berkdb
 sys-libs/glibc -clone3 debug -multiarch
