@@ -5,7 +5,7 @@ ACCEPT_KEYWORDS="~amd64"
 
 USE="X aalib acpi alsa -apache2 bzip2 \
      cairo crypt cups dbus directfb drm dvd encode ffmpeg \
-     flash firebird flac -fortran gsm -gpm jpeg2k \
+     flash firebird flac gsm -gpm jpeg2k \
      libdrm mad -nas nptl offensive ogg openntpd -oss \
      samba scanner sdk ssl svg symlink \
      tiff truetype usb vorbis wmf zlib a52 expat \
@@ -22,9 +22,9 @@ USE="X aalib acpi alsa -apache2 bzip2 \
      -kde mng lame -gnome -eds faac vpx \
      -gnome-keyring -snmp -berkdb -gimp -iconv \
      openexr -gstreamer -avahi -server dts \
-     -xscreensaver -cxx -glade equalizer realtime twolame -lvm1 \
+     -xscreensaver -glade equalizer realtime twolame -lvm1 \
      -java -gtk -gtk3 webp caps -bindist ipv6 -libav -qt5 xkb \
-     wayland egl gles2 nsplugin sqlite netbeans \
+     wayland egl gles2 sqlite \
      bluetooth -gcj -qt4 x264 readline pcre openmp printsupport"
 
 ALSA_CARDS="hda-intel"
