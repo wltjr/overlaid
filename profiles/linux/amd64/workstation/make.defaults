@@ -33,8 +33,6 @@ ALSA_PCM_PLUGINS="asym dmix dsnoop empty extplug iec958 ioplug plug rate route s
 
 APACHE2_MODULES=""
 
-CALLIGRA_FEATURES=""
-
 CAMERAS=""
 
 ENLIGHTENMENT_MODULES="appmenu backlight battery clock 
@@ -53,11 +51,7 @@ INPUT_DEVICES="-evdev -keyboard libinput synaptics wacom"
 
 LCD_DEVICES=""
 
-LIBREOFFICE_EXTENSIONS=""
-
 LLVM_TARGETS="AMDGPU X86"
-
-OFFICE_IMPLEMENTATION="openoffice"
 
 SANE_BACKENDS="epson"
 
