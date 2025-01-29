@@ -2,7 +2,6 @@
 app-text/xournalpp
 sys-auth/libfprint
 x11-drivers/xf86-input-wacom
-x11-drivers/xf86-video-intel
 x11-misc/barrier
 x11-misc/convertible
 x11-misc/matchbox-keyboard
