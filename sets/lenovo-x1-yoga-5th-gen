@@ -1,6 +1,7 @@
 @laptop
 app-text/xournalpp
 sys-auth/libfprint
+x11-apps/xinput
 x11-drivers/xf86-input-wacom
 x11-misc/barrier
 x11-misc/matchbox-keyboard
