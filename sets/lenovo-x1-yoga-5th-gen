@@ -1,7 +1,6 @@
 @laptop
 app-text/xournalpp
 sys-auth/libfprint
-sys-firmware/iwl8000-ucode
 x11-drivers/xf86-input-wacom
 x11-drivers/xf86-video-intel
 x11-misc/barrier
