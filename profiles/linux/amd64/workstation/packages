@@ -79,6 +79,7 @@
 *media-gfx/imagemagick
 *media-gfx/pstoedit
 *media-gfx/xsane
+*media-libs/opencv
 *media-sound/audacity
 *media-sound/cdparanoia
 *media-sound/enjoy
