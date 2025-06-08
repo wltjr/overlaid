@@ -62,6 +62,7 @@ media-libs/libmng static-libs
 media-libs/libsdl2 joystick
 media-libs/mesa video_cards_i965 video_cards_intel -video_cards_nvidia video_cards_radeon wayland
 media-libs/libvpx postproc svc
+media-libs/opencv contrib
 media-libs/opensubdiv tbb
 media-libs/portaudio cxx
 media-libs/xine-lib gtk
