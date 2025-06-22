@@ -93,6 +93,7 @@ net-misc/openssh -X
 net-nds/openldap berkdb -gnutls odbc -minimal
 net-vpn/tinc upnp
 net-wireless/bluez deprecated mesh midi obex
+sci-misc/ale sdl
 sci-physics/bullet double-precision
 sys-apps/busybox mdev sep-usr static
 sys-apps/fwupd uefi flashrom -seccomp spi lzma
