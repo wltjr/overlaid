@@ -122,6 +122,7 @@
 *net-vpn/openfortivpn
 *net-wireless/wireless-tools
 *sci-misc/ale
+*sci-misc/cxxplot
 *sci-ml/pytorch
 *sys-apps/dmidecode
 *sys-apps/dstat
