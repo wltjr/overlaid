@@ -1,1 +1,2 @@
 dev-java/icedtea-web
+=media-libs/openexr-3.4.4
