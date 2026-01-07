@@ -1,5 +1,6 @@
 @laptop
 app-text/xournalpp
+gnome-extra/iio-sensor-proxy
 sys-auth/libfprint
 x11-apps/xinput
 x11-drivers/xf86-input-wacom
