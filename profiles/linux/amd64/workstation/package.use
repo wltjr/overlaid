@@ -119,4 +119,5 @@ x11-drivers/xf86-video-intel dri dri3 sna uxa
 x11-libs/wxGTK -webkit
 x11-libs/libdrm libkms video_cards_intel video_cards_radeon
 x11-libs/vte python
+x11-misc/entrance logind
 x11-wm/enlightenment egl udisks wayland -wifi
