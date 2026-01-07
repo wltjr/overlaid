@@ -17,4 +17,4 @@ sys-devel/gcc cxx fortran hardened openmp -pch pie
 sys-fs/lvm2 lvm -udev
 sys-libs/glibc -multiarch
 sys-libs/ncurses tinfo
-virtual/libcrypt static-libs
+virtual/libcrypt abi_x86_32 static-libs
