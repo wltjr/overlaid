@@ -107,6 +107,7 @@
 *net-ftp/atftp
 *net-ftp/ftp
 *net-im/discord
+*net-im/element-desktop-bin
 *net-im/zoom
 *net-libs/gnutls
 *net-misc/freerdp
