@@ -1,4 +1,5 @@
 =dev-db/firebird-4*
+>=dev-lang/python-3.14
 dev-lang/rust
 dev-lang/rust-bin
 llvm-core/llvm
