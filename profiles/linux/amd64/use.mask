@@ -36,6 +36,7 @@ kernel_Darwin
 kernel_FreeBSD
 kernel_freemint
 kernel_HPUX
+kernel_Hurd
 kernel_NetBSD
 kernel_OpenBSD
 kernel_SunOS
