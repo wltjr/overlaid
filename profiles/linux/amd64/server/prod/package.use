@@ -3,3 +3,4 @@ dev-lang/perl berkdb
 dev-lang/python ncurses
 dev-libs/libxml2 python
 dev-python/pillow webp
+www-servers/lighttpd lua_single_target_lua5-4 pcre
