@@ -1,0 +1,9 @@
+*app-admin/sudo
+*dev-python/beautifulsoup4
+*dev-python/cssselect
+*dev-python/lxml
+*dev-python/lxml-html-clean
+*dev-python/txredisapi
+*net-im/coturn
+*net-im/synapse
+*www-servers/lighttpd
