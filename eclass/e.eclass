@@ -108,7 +108,7 @@ if [[ ${E_PV} != *9999* ]]; then
 	KEYWORDS="~amd64"
 fi
 
-inherit eutils xdg-utils
+inherit xdg-utils
 
 if [[ ! ${E_PYTHON} ]]; then
 	inherit libtool
