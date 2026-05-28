@@ -2,6 +2,7 @@
 >=dev-lang/python-3.14
 dev-lang/rust
 dev-lang/rust-bin
+=llvm-core/libclc-22*
 llvm-core/llvm
 sys-kernel/gentoo-sources
 =virtual/libcrypt-1
