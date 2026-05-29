@@ -1,15 +1,16 @@
-# Copyright 2016-2021 Obsidian-Studios, Inc.
+# Copyright 2016-2026 William L Thomson Jr
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
-inherit eutils user
+inherit edos2unix user-info
 
-MY_PN=ASSP_${PV%.*}_${PV##*.}_install
+MY_PV="${PV%.*}_${PV##*.}"
+MY_PN="ASSP_${MY_PV/_/%20}install"
 
 DESCRIPTION="Anti-Spam SMTP Proxy written in Perl"
 HOMEPAGE="https://${PN}.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}.zip"
+SRC_URI="https://downloads.sourceforge.net/project/${PN}/ASSP%20V2%20multithreading/${MY_PV/_/%20}/${MY_PN}.zip"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -18,7 +19,10 @@ KEYWORDS="~amd64"
 IUSE="ipv6 ldap sasl snmp spf ssl syslog"
 
 #	dev-perl/Schedule-Cron
-RDEPEND="dev-lang/perl[ithreads]
+RDEPEND="
+	acct-group/assp
+	acct-user/assp
+	dev-lang/perl[perl_features_ithreads]
 	dev-perl/Archive-Extract
 	dev-perl/Archive-Zip
 	dev-perl/BerkeleyDB
@@ -55,7 +59,6 @@ RDEPEND="dev-lang/perl[ithreads]
 	virtual/perl-IO-Compress
 	virtual/perl-Time-HiRes
 	virtual/perl-threads
-	virtual/perl-threads-shared
 	ipv6? ( dev-perl/IO-Socket-INET6 )
 	sasl? ( dev-perl/Authen-SASL )
 	snmp? ( dev-perl/Net-SNMP )
@@ -71,11 +74,6 @@ DEPEND="app-arch/unzip
 "
 
 S="${WORKDIR}/${PN}"
-
-pkg_setup() {
-	enewgroup assp
-	enewuser assp -1 -1 /dev/null assp
-}
 
 src_prepare() {
 	default
@@ -204,7 +202,6 @@ src_install() {
 
 	dodoc {changelog_2.0.X,changelog_2.1.X,changelog_2.2.X,changelog_2.3.X,changelog,cmdqueue_example}.txt
 	dodoc docs/*.{htm,png,txt}
-	dohtml docs/*.htm
 }
 
 pkg_postinst() {
