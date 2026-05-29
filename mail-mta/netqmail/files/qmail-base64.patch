@@ -1,0 +1,177 @@
+diff -Naur netqmail-1.06_orig/base64.c netqmail-1.06/base64.c
+--- netqmail-1.06_orig/base64.c	1969-12-31 19:00:00.000000000 -0500
++++ netqmail-1.06/base64.c	2021-08-02 19:54:27.829214045 -0400
+@@ -0,0 +1,124 @@
++#include "base64.h"
++#include "stralloc.h"
++#include "substdio.h"
++#include "str.h"
++
++static char *b64alpha =
++  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
++#define B64PAD '='
++
++/* returns 0 ok, 1 illegal, -1 problem */
++
++int b64decode(in,l,out)
++const unsigned char *in;
++int l;
++stralloc *out; /* not null terminated */
++{
++  int p = 0;
++  int n;
++  unsigned int x;
++  int i, j;
++  char *s;
++  unsigned char b[3];
++
++  if (l == 0)
++  {
++    if (!stralloc_copys(out,"")) return -1;
++    return 0;
++  }
++
++  while(in[l-1] == B64PAD) {
++    p ++;
++    l--;
++  }
++
++  n = (l + p) / 4;
++  i = (n * 3) - p;
++  if (!stralloc_ready(out,i)) return -1;
++  out->len = i;
++  s = out->s;
++
++  for(i = 0; i < n - 1 ; i++) {
++    x = 0;
++    for(j = 0; j < 4; j++) {
++      if(in[j] >= 'A' && in[j] <= 'Z')
++        x = (x << 6) + (unsigned int)(in[j] - 'A' + 0);
++      else if(in[j] >= 'a' && in[j] <= 'z')
++        x = (x << 6) + (unsigned int)(in[j] - 'a' + 26);
++      else if(in[j] >= '0' && in[j] <= '9')
++        x = (x << 6) + (unsigned int)(in[j] - '0' + 52);
++      else if(in[j] == '+')
++        x = (x << 6) + 62;
++      else if(in[j] == '/')
++        x = (x << 6) + 63;
++      else if(in[j] == '=')
++        x = (x << 6);
++    }
++
++    s[2] = (unsigned char)(x & 255); x >>= 8;
++    s[1] = (unsigned char)(x & 255); x >>= 8;
++    s[0] = (unsigned char)(x & 255); x >>= 8;
++    s += 3; in += 4;
++  }
++
++  x = 0;
++  for(j = 0; j < 4; j++) {
++    if(in[j] >= 'A' && in[j] <= 'Z')
++      x = (x << 6) + (unsigned int)(in[j] - 'A' + 0);
++    else if(in[j] >= 'a' && in[j] <= 'z')
++      x = (x << 6) + (unsigned int)(in[j] - 'a' + 26);
++    else if(in[j] >= '0' && in[j] <= '9')
++      x = (x << 6) + (unsigned int)(in[j] - '0' + 52);
++    else if(in[j] == '+')
++      x = (x << 6) + 62;
++    else if(in[j] == '/')
++      x = (x << 6) + 63;
++    else if(in[j] == '=')
++      x = (x << 6);
++  }
++
++  b[2] = (unsigned char)(x & 255); x >>= 8;
++  b[1] = (unsigned char)(x & 255); x >>= 8;
++  b[0] = (unsigned char)(x & 255); x >>= 8;
++
++  for(i = 0; i < 3 - p; i++)
++    s[i] = b[i];
++
++  return 0;
++}
++
++int b64encode(in,out)
++stralloc *in;
++stralloc *out; /* not null terminated */
++{
++  unsigned char a, b, c;
++  int i;
++  char *s;
++
++  if (in->len == 0)
++  {
++    if (!stralloc_copys(out,"")) return -1;
++    return 0;
++  }
++
++  i = in->len / 3 * 4 + 4;   
++  if (!stralloc_ready(out,i)) return -1;
++  s = out->s;
++
++  for (i = 0;i < in->len;i += 3) {
++    a = in->s[i];
++    b = i + 1 < in->len ? in->s[i + 1] : 0;
++    c = i + 2 < in->len ? in->s[i + 2] : 0;
++
++    *s++ = b64alpha[a >> 2];
++    *s++ = b64alpha[((a & 3 ) << 4) | (b >> 4)];
++
++    if (i + 1 >= in->len) *s++ = B64PAD;
++    else *s++ = b64alpha[((b & 15) << 2) | (c >> 6)];
++
++    if (i + 2 >= in->len) *s++ = B64PAD;
++    else *s++ = b64alpha[c & 63];
++  }
++  out->len = s - out->s;
++  return 0;
++}
+diff -Naur netqmail-1.06_orig/base64.h netqmail-1.06/base64.h
+--- netqmail-1.06_orig/base64.h	1969-12-31 19:00:00.000000000 -0500
++++ netqmail-1.06/base64.h	2021-08-02 19:54:31.446002791 -0400
+@@ -0,0 +1,7 @@
++#ifndef BASE64_H
++#define BASE64_H
++
++extern int b64decode();
++extern int b64encode();
++
++#endif
+diff -Naur netqmail-1.06_orig/Makefile netqmail-1.06/Makefile
+--- netqmail-1.06_orig/Makefile	2021-08-02 18:50:45.633534311 -0400
++++ netqmail-1.06/Makefile	2021-08-02 19:59:58.793718641 -0400
+@@ -136,6 +136,10 @@
+ compile auto_usera.c
+ 	./compile auto_usera.c
+ 
++base64.o: \
++compile base64.c base64.h stralloc.h substdio.h str.h
++	./compile base64.c
++
+ binm1: \
+ binm1.sh conf-qmail
+ 	cat binm1.sh \
+@@ -1536,12 +1540,12 @@
+ timeoutwrite.o ip.o ipme.o ipalloc.o control.o constmap.o received.o \
+ date822fmt.o now.o qmail.o cdb.a fd.a wait.a datetime.a getln.a \
+ open.a sig.a case.a env.a stralloc.a alloc.a substdio.a error.a str.a \
+-fs.a auto_qmail.o socket.lib
++fs.a auto_qmail.o base64.o socket.lib
+ 	./load qmail-smtpd rcpthosts.o commands.o timeoutread.o \
+ 	timeoutwrite.o ip.o ipme.o ipalloc.o control.o constmap.o \
+ 	received.o date822fmt.o now.o qmail.o cdb.a fd.a wait.a \
+ 	datetime.a getln.a open.a sig.a case.a env.a stralloc.a \
+-	alloc.a substdio.a error.a str.a fs.a auto_qmail.o  `cat \
++	alloc.a substdio.a error.a str.a fs.a auto_qmail.o base64.o `cat \
+ 	socket.lib`
+ 
+ qmail-smtpd.0: \
+@@ -1553,7 +1557,7 @@
+ substdio.h alloc.h auto_qmail.h control.h received.h constmap.h \
+ error.h ipme.h ip.h ipalloc.h ip.h gen_alloc.h ip.h qmail.h \
+ substdio.h str.h fmt.h scan.h byte.h case.h env.h now.h datetime.h \
+-exit.h rcpthosts.h timeoutread.h timeoutwrite.h commands.h
++exit.h rcpthosts.h timeoutread.h timeoutwrite.h commands.h base64.h
+ 	./compile qmail-smtpd.c
+ 
+ qmail-start: \

@@ -6,9 +6,8 @@ EAPI=7
 GENQMAIL_PV=20191010
 QMAIL_SPP_PV=0.42
 
-QMAIL_TLS_PV=20190114
-QMAIL_TLS_F=${PN}-1.05-tls-smtpauth-${QMAIL_TLS_PV}.patch
-QMAIL_TLS_CVE=vu555316.patch
+QMAIL_TLS_PV=20200107
+QMAIL_TLS_F=${PN}-${PV}-tls-${QMAIL_TLS_PV}.patch
 
 QMAIL_BIGTODO_PV=103
 QMAIL_BIGTODO_F=big-todo.${QMAIL_BIGTODO_PV}.patch
@@ -32,8 +31,7 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 		highvolume? ( mirror://qmail/${QMAIL_BIGTODO_F} )
 		qmail-spp? ( mirror://sourceforge/qmail-spp/${QMAIL_SPP_F} )
 		ssl? (
-			https://mirror.alexh.name/qmail/netqmail/${QMAIL_TLS_F}
-			http://inoa.net/qmail-tls/${QMAIL_TLS_CVE}
+			https://inoa.net/qmail-tls/${QMAIL_TLS_F}
 			https://arnt.gulbrandsen.priv.no/qmail/qmail-smtputf8.patch
 		)
 	)
@@ -84,17 +82,6 @@ RDEPEND="${DEPEND}
 	!mail-mta/ssmtp[mta]
 "
 
-pkg_setup() {
-	if [[ -n "${QMAIL_PATCH_DIR}" ]]; then
-		eerror
-		eerror "The QMAIL_PATCH_DIR variable for custom patches"
-		eerror "has been removed from ${PN}. If you need custom patches"
-		eerror "see 'user patches' in the portage manual."
-		eerror
-		die "QMAIL_PATCH_DIR is not supported anymore"
-	fi
-}
-
 src_unpack() {
 	genqmail_src_unpack
 	use qmail-spp && qmail_spp_src_unpack
@@ -122,8 +109,10 @@ src_prepare() {
 			sed 's~^--- \.\./\.\./~--- ~g' \
 				< "${DISTDIR}"/${QMAIL_TLS_F} \
 				> "${T}"/${QMAIL_TLS_F} || die
-			PATCHES+=( "${T}/${QMAIL_TLS_F}"
-				"${DISTDIR}/${QMAIL_TLS_CVE}"
+			PATCHES+=(
+				"${FILESDIR}/qmail-base64.patch"
+				"${T}/${QMAIL_TLS_F}"
+				"${FILESDIR}/qmail-smtpd-auth-0.5.10.patch"
 				"${FILESDIR}/qmail-smtputf8.patch"
 				"${FILESDIR}/qmail-smtputf8-crlf-fix.patch"
 			)
@@ -160,6 +149,58 @@ src_prepare() {
 	else
 		einfo "Enabled CRAM_MD5 support"
 	fi
+
+	sed -e "1 i\#include \"sig.h\"" -i "${S}"/predate.c || die
+
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/cdb_seek.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/newfield.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/seek_cur.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/seek_end.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/seek_set.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/seek_trunc.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/fd_copy.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/fd_move.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/qmail-inject.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/qmail-rspawn.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/qmail-showctl.c || die
+	sed -e "1 i\#include <unistd.h>" -i "${S}"/triggerpull.c || die
+
+	sed -e "1 i\#include <unistd.h>" -e "1 i\#include <sys/stat.h>" \
+		-i "${S}"/qmail-start.c || die
+	sed -e "1 i\#include <unistd.h>"  -e "1 i\#include <sys/stat.h>" \
+		-e "1 i\#include <stdio.h>" -e "1 i\#include \"byte.h\"" \
+		-i "${S}"/qmail-newu.c || die
+
+	sed -e "1 i\#include <unistd.h>" -e "1 i\#include <grp.h>" \
+		-e "s|short|unsigned int|" -i "${S}"/chkshsgr.c || die
+
+	sed -e "1 i\#include <utime.h>" -i "${S}"/qmail-send.c || die
+
+	sed -e 's|int (\*op)|long (\*op)|' -i "${S}"/substdio.h || die
+	sed -e 's|register int (\*op)|register long (\*op)|' -i "${S}"/substdio.c || die
+
+	sed -e 's|int subfd|long subfd|g' -i "${S}"/subfd.h || die
+	sed -e 's|int subfd|long subfd|' -i "${S}"/subfdin.c || die
+	sed -e 's|int subfd|long subfd|' -i "${S}"/subfdins.c || die
+
+	sed -e 's|int safe|long safe|g' -i "${S}"/qmail-remote.c || die
+
+	sed -e "1 i\#include <stdio.h>" -e "s|char \*s|const char \*s|" \
+		-e "s|void puts|int puts|" -i "${S}"/auto-str.c || die
+	sed -e "1 i\#include <stdio.h>" -e "s|char \*s|const char \*s|" \
+		-e "s|void puts|int puts|" -i "${S}"/auto-int8.c || die
+	sed -e "1 i\#include <stdio.h>" -e "s|char \*s|const char \*s|" \
+		-e "s|void puts|int puts|" -i "${S}"/auto-int.c || die
+	sed -e "1 i\#include <stdio.h>" -e "s|void puts(s)|int puts(s) const|" \
+		-i "${S}"/qmail-inject.c || die
+	sed -e "1 i\#include <stdio.h>" -e "s|void puts(s)|int puts(s) const|" \
+		-i "${S}"/qmail-pop3d.c || die
+	sed -e "1 i\#include <stdio.h>" -e "s|void puts(s)|int puts(s) const|" \
+		-i "${S}"/qmail-popup.c || die
+
+	sed -e "s|main()|int main()|" -i qmail-qmqpc.c || die
+	sed -e "s|main()|int main()|" -i qmail-qmqpd.c || die
+	sed -e "s|main()|int main()|" -i qmail-qmtpd.c || die
 
 	ht_fix_file Makefile*
 }
