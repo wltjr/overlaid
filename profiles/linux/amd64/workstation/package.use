@@ -27,7 +27,7 @@ dev-libs/libdbusmenu gtk gtk3
 dev-libs/libgcrypt static-libs
 dev-libs/libindicate gtk
 dev-libs/libpcre pcre16
-dev-libs/libpcre2 pcre16
+dev-libs/libpcre2 pcre16 pcre32
 dev-libs/popt static-libs
 dev-libs/protobuf libupb
 dev-libs/pwlib ldap
