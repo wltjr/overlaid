@@ -21,6 +21,7 @@ src_prepare() {
 	pkgs=(
 		dev-libs/efl
 		sys-libs/glibc
+		x11-misc/entrance
 		x11-wm/enlightenment
 	)
 	for p in "${pkgs[@]}"; do
