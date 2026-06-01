@@ -24,13 +24,14 @@ src_prepare() {
 		|| die "Failed to create ${CONF}"
 
 	pkgs=(
-		app-office/openoffice-bin
-		dev-java/openjdk-bin
-		dev-java/oracle-jdk-bin
-		dev-util/android-studio-bin
-		net-im/discord-bin
+		app-office/libreoffice-bin
+		dev-lang/rust-bin
+		dev-util/nvidia-cuda-toolkit
+		net-im/discord
+		net-im/element-desktop-bin
+		net-im/zoom
 		sys-kernel/gentoo-sources
-		www-plugins/adobe-flash
+		www-client/opera
 	)
 	for p in "${pkgs[@]}"; do
 		echo "${p} ${CONF}" >> "${PKGS}" \
