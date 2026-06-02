@@ -1,10 +1,12 @@
 # Copyright 2017 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
+E_BASE_URI="https://github.com/wltjr/${PN}"
 E_SNAP="a6c788f62f413219d8913e762650234e52a746b7"
-E_TYPE="apps"
+#E_TYPE="apps"
+E_TARBALL="tar.gz"
 
 inherit e
 
