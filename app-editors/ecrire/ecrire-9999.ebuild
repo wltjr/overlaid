@@ -1,7 +1,7 @@
 # Copyright 2017-2022 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 E_BASE_URI="https://github.com/Obsidian-StudiosInc/${PN}"
 E_BUILD="cmake"
