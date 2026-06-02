@@ -1,19 +1,16 @@
 # Copyright 2018-2022 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
+E_BASE_URI="https://github.com/wltjr/${PN}"
 E_BUILD="meson"
-E_NO_COMMON="1"
-E_SNAP="${P}"
+E_DISTFILE="v${PV}"
+E_SRC_URI="${E_BASE_URI}/archive"
 E_TARBALL="tar.gz"
-E_TYPE="enlightenment/modules"
+E_NO_COMMON=1
 
 inherit e
-
-if [[ ${PV} == 1.1.0 ]]; then
-	SRC_URI="https://github.com/Obsidian-StudiosInc/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-fi
 
 DESCRIPTION="Insanity for your E desktop"
 HOMEPAGE="${E_GIT_URI}/${E_TYPE}/${PN}.git"
