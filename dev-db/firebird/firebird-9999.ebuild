@@ -1,7 +1,7 @@
 # Copyright 2015-2019 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 if [[ ${PV} == *_* ]]; then
 	MY_PN="T"
@@ -10,7 +10,6 @@ else
 fi
 MY_PV="${PV/_a/_A}"
 MY_PV="${PV/_b/_B}"
-MY_PV="${MY_PV//./_}"
 MY_P="${MY_PN}${MY_PV}"
 BASE_URI="https://github.com/FirebirdSQL/${PN}"
 
@@ -24,7 +23,7 @@ else
 	MY_S="${PN}-${MY_P}"
 fi
 
-inherit autotools eutils flag-o-matic multilib readme.gentoo-r1 user ${ECLASS}
+inherit autotools flag-o-matic multilib readme.gentoo-r1 ${ECLASS}
 
 DESCRIPTION="A relational database offering many ANSI SQL:2003 and some SQL:2008 features"
 HOMEPAGE="https://www.firebirdsql.org/"

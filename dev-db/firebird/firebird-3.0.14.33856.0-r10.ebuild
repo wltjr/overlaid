@@ -1,19 +1,18 @@
 # Copyright 2015-2019 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 
-inherit autotools eutils flag-o-matic multilib readme.gentoo-r1 user
+inherit autotools flag-o-matic multilib readme.gentoo-r1
 
 MY_PN="${PN^}"
 MY_PV="${PV%*.*.*}"
-MY_PV="${MY_PV//./_}"
 MY_P="${MY_PN}-${PV%.*}-${PV##*.}"
 MY_MM="${PV%.*.*.*}"
 
 DESCRIPTION="A relational database offering many ANSI SQL:2003 and some SQL:2008 features"
 HOMEPAGE="https://www.firebirdsql.org/"
-SRC_URI="https://github.com/FirebirdSQL/${PN}/releases/download/R${MY_PV}/${MY_P}.tar.bz2"
+SRC_URI="https://github.com/FirebirdSQL/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.bz2"
 
 LICENSE="IDPL Interbase-1.0"
 KEYWORDS="~amd64"
