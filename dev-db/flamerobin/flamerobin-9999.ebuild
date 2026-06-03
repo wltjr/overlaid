@@ -1,7 +1,7 @@
 # Copyright 2016-2021 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 if [[ ${PV} == 9999 ]]; then
 	ECLASS="git-r3"
@@ -11,9 +11,9 @@ else
 	SRC_URI="https://github.com/mariuz/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-WX_GTK_VER="3.0-gtk3"
+WX_GTK_VER="3.2-gtk3"
 
-inherit eutils wxwidgets ${ECLASS}
+inherit wxwidgets ${ECLASS}
 
 DESCRIPTION="A database administration tool for Firebird DBMS"
 HOMEPAGE="https://www.flamerobin.org/"
