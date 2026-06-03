@@ -1,17 +1,17 @@
 # Copyright 2015-2018 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
-inherit eutils flag-o-matic
+inherit flag-o-matic
 
-MY_PV="${PV%.*}"
-MY_PN="OdbcJdbc"
-MY_P="${MY_PN}-src-${PV}"
+MY_PV="${PV//./-}-release"
+MY_PN="firebird-odbc-driver"
+MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="ODBC driver for Firebird RDBMS"
-HOMEPAGE="https://firebirdsql.org/index.php?op=files&id=odbc"
-SRC_URI="mirror://sourceforge/project/firebird/firebird-ODBC-driver/${MY_PV}-Release/${MY_P}.tar.gz"
+HOMEPAGE="https://www.firebirdsql.org/en/odbc-driver/"
+SRC_URI="https://github.com/FirebirdSQL/${MY_PN}/archive/refs/tags/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="IDPL"
 SLOT="0"
 
@@ -23,7 +23,7 @@ DEPEND="dev-db/firebird
 
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_PN}"
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
