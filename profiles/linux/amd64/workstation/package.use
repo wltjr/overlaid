@@ -90,7 +90,7 @@ net-libs/webkit-gtk gstreamer opengl
 net-misc/curl -gnutls
 net-misc/networkmanager dhclient -dhcpcd -iwd modemmanager -nss -ppp
 net-misc/openssh -X
-net-nds/openldap berkdb -gnutls odbc -minimal
+net-nds/openldap berkdb -gnutls -minimal
 net-vpn/tinc upnp
 net-wireless/bluez deprecated mesh midi obex
 sci-misc/ale sdl
