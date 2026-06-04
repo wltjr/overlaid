@@ -1,11 +1,14 @@
 # Copyright 2017-2022 Obsidian-Studios, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
+
+if [[ ${PV} != 9999 ]]; then
+        KEYWORDS="~amd64"
+fi
 
 DESCRIPTION="Install package env files in /etc/portage to prevent making bins"
 HOMEPAGE="https://github.com/Obsidian-StudiosInc/os-xtoo/"
-KEYWORDS="~amd64"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -24,6 +27,7 @@ src_prepare() {
 		|| die "Failed to create ${CONF}"
 
 	pkgs=(
+		app-editors/vscode
 		app-office/libreoffice-bin
 		dev-lang/rust-bin
 		dev-util/nvidia-cuda-toolkit
