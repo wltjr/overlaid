@@ -1,2 +1,3 @@
 dev-java/java-config
+sys-apps/baselayout-java
 www-servers/tomcat:10
