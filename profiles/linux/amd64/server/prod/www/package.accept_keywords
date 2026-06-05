@@ -86,7 +86,6 @@ dev-java/jakarta-regexp
 dev-java/jakarta-xml-bind-api
 dev-java/jansi
 dev-java/jansi-native
-dev-java/java-config
 dev-java/java-cup
 dev-java/javamail
 dev-java/javassist
