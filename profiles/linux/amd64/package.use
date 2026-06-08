@@ -1,5 +1,6 @@
 app-editors/nano ncurses nls spell unicode
 dev-db/sqlite secure-delete unlock-notify
+dev-libs/cutlass cudnn -headers-only profiler tools
 dev-libs/libgpg-error nls static-libs
 dev-libs/libpcre2 static-libs
 dev-libs/libxml2 icu python
