@@ -19,7 +19,6 @@ dev-haskell/quickcheck template_haskell
 dev-lang/python ncurses tk
 dev-libs/DirectFB -egl nvidia video_cards_i965 video_cards_intel video_cards_nvidia video_cards_radeon
 dev-libs/boost icu python
-dev-libs/cutlass tools
 dev-libs/efl audio eet egl elogind gstreamer harfbuzz lua_single_target_lua5-1 -opengl physics postscript psd -sdl -static-libs unwind xpm wayland
 dev-libs/gmp cxx
 dev-libs/libcdio cddb
