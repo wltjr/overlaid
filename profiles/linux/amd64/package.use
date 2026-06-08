@@ -11,6 +11,7 @@ media-libs/libpng apng static-libs
 net-libs/gnutls pkcs11 tools
 net-misc/curl -gnutls
 net-misc/ntp openntpd
+sci-ml/caffe2 cuda -flash memefficient numpy openmp -amdgpu_targets_gfx90a -amdgpu_targets_gfx908 -amdgpu_targets_gfx942 -amdgpu_targets_gfx1030 -amdgpu_targets_gfx1100 -amdgpu_targets_gfx1101 -amdgpu_targets_gfx1200 -amdgpu_targets_gfx1201
 sys-apps/busybox -pam static
 sys-apps/grep static
 sys-apps/sandbox abi_x86_32
