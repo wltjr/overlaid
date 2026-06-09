@@ -1,8 +1,0 @@
-@laptop
-#@nvidia
-app-text/xournalpp
-sys-firmware/i915-ucode
-sys-firmware/intel-firmware
-sys-firmware/iwl8000-ucode
-x11-drivers/xf86-input-wacom
-x11-drivers/xf86-video-intel
