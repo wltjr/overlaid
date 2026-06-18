@@ -53,6 +53,7 @@ media-libs/gst-plugins-bad gles2
 media-libs/harfbuzz icu
 media-libs/imlib2 X
 media-libs/jpeg static-libs
+media-libs/libheif x265
 media-libs/libjpeg-turbo static-libs
 media-libs/libcanberra gtk gtk3
 media-libs/libmypaint gegl
