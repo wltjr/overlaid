@@ -5,7 +5,7 @@ ACCEPT_KEYWORDS="~amd64"
 
 USE="X aalib acpi alsa -apache2 bzip2 \
      cairo crypt cups dbus directfb drm dvd encode ffmpeg \
-     firebird flac gsm -gpm jpeg2k \
+     firebird flac gsm -gpm heif jpeg2k \
      libdrm mad -nas nptl offensive ogg openntpd -oss \
      samba scanner sdk ssl svg symlink \
      tiff truetype usb vorbis wmf zlib a52 expat \
