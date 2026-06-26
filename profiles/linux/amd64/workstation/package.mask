@@ -1,3 +1,4 @@
 dev-java/icedtea-web
 =media-libs/openexr-3.4.4
 >=net-im/zoom-7.0
+>=dev-lang/ghc-9.8
