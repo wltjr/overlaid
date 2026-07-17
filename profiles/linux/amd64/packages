@@ -16,7 +16,6 @@
 *net-analyzer/mtr
 *net-analyzer/tcpdump
 *net-analyzer/traceroute
-*net-dns/bind-tools
 *net-fs/nfs-utils
 *net-ftp/ftp
 *net-misc/curl
