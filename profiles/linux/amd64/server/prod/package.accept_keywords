@@ -1,5 +1,4 @@
 net-misc/ntp
 net-vpn/tinc
 app-admin/perl-cleaner
-dev-lang/perl
 sys-boot/syslinux
