@@ -139,6 +139,7 @@ src_prepare() {
 		-e 's|$base/$file") \|\| mlog(0,"error: unable to open $base/$file|$file") \|\| mlog(0,"error: unable to open $file|' \
 		-e 's|$base/$file for URIBLCCTLDS|$file for URIBLCCTLDS|g' \
 		-e 's|$base/$file updated for URIBLCCTLDS|$file updated for URIBLCCTLDS|' \
+		-e 's|DisableSyslogKeepAlive = 0|DisableSyslogKeepAlive = 1|' \
 		assp.pl || die
 
 	sed -i -e 's|$base/images|/usr/share/assp/images|g' \
