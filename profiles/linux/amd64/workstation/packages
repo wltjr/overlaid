@@ -102,7 +102,6 @@
 *net-analyzer/traceroute
 *net-analyzer/wireshark
 *net-dialup/minicom
-*net-dns/bind-tools
 *net-fs/nfs-utils
 *net-ftp/atftp
 *net-ftp/ftp
