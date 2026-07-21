@@ -8,6 +8,7 @@ dev-libs/openssl -sslv3
 dev-util/nvidia-cuda-toolkit profiler
 dev-vcs/git -cvs -rust -perl
 media-libs/libpng apng static-libs
+net-dns/bind xml
 net-libs/gnutls pkcs11 tools
 net-misc/curl -gnutls
 net-misc/ntp openntpd
