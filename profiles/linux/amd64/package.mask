@@ -3,7 +3,7 @@
 dev-lang/rust
 dev-lang/rust-bin
 >=dev-util/spirv-llvm-translator-22
-=llvm-core/libclc-22*
+>=llvm-runtimes/libclc-22
 llvm-core/llvm
 sys-kernel/gentoo-sources
 =virtual/libcrypt-1
