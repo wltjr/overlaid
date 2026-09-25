@@ -7,4 +7,5 @@ dev-perl/Sys-CpuAffinity
 dev-perl/Text-Affixes
 dev-perl/Text-Ngram
 dev-perl/Thread-State
+dev-perl/Unicode-CaseFold
 net-mail/dovecot
