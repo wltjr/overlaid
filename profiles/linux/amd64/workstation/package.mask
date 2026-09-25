@@ -1,4 +1,5 @@
 dev-java/icedtea-web
 =media-libs/openexr-3.4.4
 >=net-im/zoom-7.0
+>=net-print/cups-filters-2.0.1
 >=dev-lang/ghc-9.8
