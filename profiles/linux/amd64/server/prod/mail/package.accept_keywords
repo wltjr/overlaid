@@ -2,4 +2,5 @@ dev-perl/Convert-Scalar
 dev-perl/Lingua-Identify
 dev-perl/Lingua-Stem-Snowball
 dev-perl/Regexp-Assemble
+dev-perl/Regexp-Optimizer
 net-mail/dovecot
