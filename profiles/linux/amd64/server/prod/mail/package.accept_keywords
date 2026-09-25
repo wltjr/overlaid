@@ -3,4 +3,5 @@ dev-perl/Lingua-Identify
 dev-perl/Lingua-Stem-Snowball
 dev-perl/Regexp-Assemble
 dev-perl/Regexp-Optimizer
+dev-perl/Sys-CpuAffinity
 net-mail/dovecot
