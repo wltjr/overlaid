@@ -17,3 +17,11 @@ IUSE="test"
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build"
+
+src_prepare() {
+	default
+	rm -v contrib/freebsd_cpuset.xs \
+		contrib/irix_sysmp.xs \
+		contrib/solaris_processor_*.xs \
+		|| die
+}
