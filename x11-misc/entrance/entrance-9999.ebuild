@@ -32,6 +32,7 @@ RDEPEND="${DEPEND}
 	gui-libs/display-manager-init
 	x11-base/xorg-server
 	x11-drivers/xf86-input-libinput
+	x11-libs/libxcb
 "
 
 src_configure() {
